@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Good Flow</title>
+    <!--Favicons made with realfavicongenerator.net-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+    <!--Icons for desktop browsers-->
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+    <!--Progressive Web App feature settings file-->
+    <link rel="manifest" href="./favicons/manifest.json">
+    <!--Safary saved/pinned tab icon (svg)-->
+    <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <!--Changes tab color in android chrome-->
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="./sass/css/styles.css">
+</head>
+
+<body oncontextmenu="return false;">
+
+    <div id="canvas_flex">
+        <canvas id="viewport" width="500" height="500" style="z-index:10 !important;"></canvas>
+    </div>
+
+    <div id="turn">
+        <!-- Presents "Turn Screen" upon Portrait orientation -->
+        <div id="turn_inside">
+            Turn Screen To Play
+        </div>
+    </div>
+
+    <div id="cell_container">
+        <!--2D Matrix of "cell" elements creating the background grid-->
+    </div>
+
+    <div id='between_lvl_screen'>
+        Tap the screen to start
+    </div>
+
+    <span id="current_dir_container">
+        <span id="current_dir">&#8597;</span>
+    </span>
+
+    <span id="lives_container">
+        <span>Lives: </span>
+        <span id="lives">3</span>
+    </span>
+
+    <span id="percent">
+        00%
+    </span>
+
+    <span id="timer">120</span>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery-mobile.js"></script>
+    <script src="js/require.js"></script>
+
+
+    <script>
+        require.config({
+            baseUrl: './',
+            packages: [
+                {
+                    name: 'physicsjs',
+                    location: 'js/physicsjs',
+                    main: 'physicsjs-full'
+                }
+            ],
+        });
+        require([
+            'physicsjs',
+            './js/climber',
+            './js/climber-behavior'
+        ],
+            function (Physics) {
+                Physics(function (world) {
+
+                    jQuery.fn.center = function () {
+                        this.css("position", "absolute");
+                        if (window.innerWidth > window.innerHeight) {
+                            this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                                $(window).scrollTop()) + "px");
+                            this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                                $(window).scrollLeft()) + "px");
+                        }
+                        else {
+                            setTimeout(function () {
+                                $('#between_lvl_screen').center();
+                            }, 200);
+                        }
+                        return this;
+                    }
+
+                    subscribe_ticker = function () {
+                        if (world) {
+                            Physics.util.ticker.on(function (time) {
+                                world.step(time);
+                            }).start();
+                        }
+                        else {
+                            setTimeout(() => {
+                                subscribe_ticker();
+                            }, 150);
+                        }
+                    }
+
+                    load_climber_handler = function () {
+                        $('#viewport').on('click', (e) => {
+
+                            //Math which cell was clicked
+                            var col = Math.round(((e.clientX - $('#viewport').position().left) - unit * .5) / unit),
+                                row = Math.round(((e.clientY - $('#viewport').position().top) - unit * .5) / unit),
+                                cell = cells[col][row];
+
+                            if (this.dir_toggle === true) {
+
+                                if (!world.has(this.climber1) && row > 0 && ($.contains(document.getElementById('cell_container'), $(cells[col][row - 1])[0]) || !$.contains(document.getElementById('cell_container'), $(cells[col][row + 1])[0]))) {
+                                    this.climber1 = Physics.body('climber', {
+                                        x: cell.position().left + unit / 2
+                                        , y: cell.position().top + unit / 4 + unit / 2 - 1
+                                        , vy: -2 * unit ** 1.5 / 4790
+                                        , height: unit / 2
+                                        , width: unit - 1
+                                        , restitution: 1
+                                        , cof: 0
+                                        , cell: [col, row]
+                                        , treatment: 'dynamic'
+                                        , mass: 100000
+                                        , dir: 'N'
+                                        , styles: {
+                                            fillStyle: 'red',
+                                            strokeStyle: 'red'
+                                        }
+                                    });
+
+                                    var climber_phy = Physics.behavior('climber-behavior')
+                                        .applyTo([this.climber1]);
+                                    world.addBody(this.climber1);
+                                    world.add(climber_phy);
+                                }
+
+                                if (!world.has(this.climber2) && row < 17 && $.contains(document.getElementById('cell_container'), $(cells[col][row + 1])[0])) {
+
+                                    var y_pos = cell.position().top + unit / 1.3333 + unit / 2 + 1;
+
+                                    if (!$.contains(document.getElementById('cell_container'), $(cells[col][row - 1])[0])) {
+                                        y_pos = cell.position().top + unit / 1.3333 - unit / 2 + 1;
+                                    }
+
+                                    this.climber2 = Physics.body('climber', {
+                                        x: cell.position().left + unit / 2
+                                        , y: y_pos
+                                        , vy: 2 * unit ** 1.5 / 4790
+                                        , height: unit / 2
+                                        , width: unit - 1
+                                        , restitution: 1
+                                        , cof: 0
+                                        , cell: [col, row + ($.contains(document.getElementById('cell_container'), $(cells[col][row - 1])[0]) ? 1 : 0)]
+                                        , treatment: 'dynamic'
+                                        , mass: 100000
+                                        , dir: 'S'
+                                        , styles: {
+                                            fillStyle: 'blue',
+                                            strokeStyle: 'blue'
+                                        }
+                                    });
+
+                                    var climber_phy = Physics.behavior('climber-behavior')
+                                        .applyTo([this.climber2]);
+                                    world.addBody(this.climber2);
+                                    world.add(climber_phy);
+                                }
+                            }
+                            else {
+
+                                if (!world.has(this.climber1) && col > 0 && ($.contains(document.getElementById('cell_container'), $(cells[col - 1][row])[0]) || !$.contains(document.getElementById('cell_container'), $(cells[col + 1][row])[0]))) {
+
+                                    var x_pos = cell.position().left - (1 / 4) * unit - 1;
+                                    
+                                    if (col == 26 || !$.contains(document.getElementById('cell_container'), $(cells[col + 1][row])[0])) {
+                                        x_pos += unit;
+                                    }
+
+                                    this.climber1 = Physics.body('climber', {
+                                        x: x_pos
+                                        , y: cell.position().top + unit / 2
+                                        , vx: -2 * unit ** 1.5 / 4790
+                                        , height: unit - 1
+                                        , width: unit / 2
+                                        , restitution: 1
+                                        , cof: 0
+                                        , cell: [col - 1 + (col == 26 || !$.contains(document.getElementById('cell_container'), $(cells[col + 1][row])[0]) ? 1 : 0), row]
+                                        , treatment: 'dynamic'
+                                        , mass: 100000
+                                        , dir: 'W'
+                                        , styles: {
+                                            fillStyle: 'yellow',
+                                            strokeStyle: 'yellow'
+                                        }
+                                    });
+
+                                    var climber_phy = Physics.behavior('climber-behavior')
+                                        .applyTo([this.climber1]);
+                                    world.addBody(this.climber1);
+                                    world.add(climber_phy);
+                                }
+
+                                if (!world.has(this.climber2) && col < 26 && $.contains(document.getElementById('cell_container'), $(cells[col + 1][row])[0])) {
+
+                                    this.climber2 = Physics.body('climber', {
+                                        x: cell.position().left + unit / 4 + 1
+                                        , y: cell.position().top + unit / 2
+                                        , vx: 2 * unit ** 1.5 / 4790
+                                        , height: unit - 1
+                                        , width: unit / 2
+                                        , restitution: 1
+                                        , cof: 0
+                                        , cell: [col, row]
+                                        , treatment: 'dynamic'
+                                        , mass: 100000
+                                        , dir: 'E'
+                                        , styles: {
+                                            fillStyle: 'green',
+                                            strokeStyle: 'green'
+                                        }
+                                    });
+
+                                    var climber_phy = Physics.behavior('climber-behavior')
+                                        .applyTo([this.climber2]);
+                                    world.addBody(this.climber2);
+                                    world.add(climber_phy);
+                                }
+                            }
+                        });
+                    }
+
+                    $('#between_lvl_screen').center();
+                    var world = null;
+
+                    var init = function init(world, Physics) {
+
+                        $('#between_lvl_screen').css('display', 'none');
+
+                        $('#percent').html('00%');
+                        lives = 3;
+                        $('#lives').html(lives);
+                        time_left = 120;
+                        $('#timer').css('color', 'black');
+                        timer_id = setInterval(() => {
+                            if (time_left-- > 0) {
+                                $('#timer').html(String(time_left).padStart(3, '0'));
+                                if (time_left == 30) {
+                                    $('#timer').css('color', '#ff1f1f');
+                                }
+                            }
+                            else {
+                                $('#between_lvl_screen').css({ display: 'block', background: 'rgba(255, 255, 255, 0.84)' }).html('Game Over! Tap to restart');
+                                $('#between_lvl_screen').center();
+                                clearInterval(timer_id);
+                                world.remove(world.find(Physics.query({
+                                    name: 'climber'
+                                })));
+                                self_destruct = true;
+                                setTimeout(() => {
+                                    $(document).on('click', function () {
+                                       self_destruct = false;
+                                        $('#viewport').off('click');
+                                        $('html').off('swipe mouseup');
+                                        $('#cell_container').empty();
+                                        //$('.pjs-meta').remove();
+                                        $('#between_lvl_screen').css('display', 'hidden');
+                                        $(document).off('click');
+                                        new_game();
+                                    });
+                                }, 250);
+                            }
+                        }, 1000);
+
+                        var width = Math.max($('html').height(), window.innerWidth),
+                            height = Math.min($('html').height(), window.innerWidth),
+                            climber1,
+                            climber2;
+                        lvl = 1;
+                        dir_toggle = true;
+                        self_destruct = false;
+
+                        if (width / height <= 1.5) {
+                            //scale canvas to the width
+                            unit = width / 27;
+                            canvasWidth = width;
+                            canvasHeight = unit * 18;
+                        }
+                        else {
+                            //scale canvas to the height
+                            unit = height / 18,
+                                canvasWidth = unit * 27,
+                                canvasHeight = height;
+                        }
+
+                        document.body.style.cursor = 'n-resize';
+                        $('#current_dir_container').css({
+                            display: 'flex',
+                            height: 1.7 * unit + "px",
+                            width: 1.7 * unit + "px",
+                            fontSize: 1.125 * unit + 'px',
+                        });
+
+                        $('#timer').css({
+                            display: 'inline',
+                            fontSize: 1.25 * unit + 'px',
+                        });
+
+                        $('#lives_container').css({
+                            display: 'inline',
+                            fontSize: 1.125 * unit + 'px',
+                        });
+
+                        $('#percent').css({
+                            display: 'inline',
+                            fontSize: 1.125 * unit + 'px',
+                        });
+
+                        var viewportBounds = Physics.aabb(0, 0, canvasWidth, canvasHeight);
+
+                        var edgeBounce = Physics.behavior('edge-collision-detection', {
+                            aabb: viewportBounds
+                            , restitution: 1
+                            , cof: 0
+                        });
+
+                        world.add(edgeBounce);
+
+                        var renderer = Physics.renderer('canvas', {
+                            el: "viewport", // id of the canvas element
+                            autoResize: false,
+                            width: canvasWidth,
+                            height: canvasHeight,
+                            //meta: true
+                        });
+                        world.add(renderer);
+
+                        $('#cell_container').css('top', $('#viewport').position().top).css('left', $('#viewport').position().left).height(18 * unit).width(27 * unit);
+
+                        //add the 27*18 (486) matrix using a DOM element for each cell
+
+                        cells = [];
+
+                        for (i = 0; i < 27; i++) {
+                            var col = [];
+                            for (j = 0; j < 18; j++) {
+                                var cell = $('<span>').addClass('cell').height(unit).width(unit).css('top', j * unit).css('left', i * unit).data('marked', false);
+                                $('#cell_container').append(cell);
+                                col.push(cell);
+                            }
+                            cells.push(col);
+                        }
+
+                        var i = 2,
+                            view = new Image();
+
+                        balls = [];
+
+                        view.width = unit - 1;
+                        view.height = unit - 1;
+                        view.src = ('./images/jezzball_ball.png');
+
+                        while (i--) {
+                            var plus_or_minus = Math.random() < 0.5 ? -1 : 1,
+                                max_v = unit ** 1.5 / 400,
+                                random_v = Math.random() * max_v - 0.5 * max_v,
+                                ball = Physics.body('circle', {
+                                    x: Math.random() * canvasWidth
+                                    , y: Math.random() * canvasHeight
+                                    , radius: unit / 2 - .5
+                                    , vx: random_v
+                                    , vy: (max_v ** 2 - random_v ** 2) ** 0.5 * plus_or_minus
+                                    , angularVelocity: Math.random() * .02 - .01
+                                    , mass: 0.001
+                                    , restitution: 1
+                                    , cof: 0
+                                    , styles: {
+                                        strokeStyle: '#f4356f'
+                                        , fillStyle: 'black'
+                                        , angleIndicator: 'green'
+                                    }
+                                });
+                            ball.view = view;
+                            ball.gameType = 'circle';
+                            balls.push(ball);
+                        }
+
+                        world.add(balls);
+                        world.render();
+
+                        world.add([
+                            Physics.behavior('body-impulse-response')
+                            , Physics.behavior('sweep-prune')
+                            , Physics.behavior('body-collision-detection')
+                        ]);
+
+                        counter = 0;
+
+                        world.on('step', function () {
+                            world.render();
+                        });
+
+                        //switch dir_toggle of climbers
+                        $('html').on('mouseup', function (e) {
+                            if (e.which == 3) {
+                                dir_toggle = !dir_toggle;
+                                if (dir_toggle === false) {
+                                    $('#current_dir').html('&harr;');
+                                    document.body.style.cursor = 'w-resize';
+                                }
+                                else {
+                                    $('#current_dir').html('&#8597;');
+                                    document.body.style.cursor = 'n-resize';
+                                }
+                            }
+                        });
+
+                        $('html').on('swipe', function () {
+                            dir_toggle = !dir_toggle;
+                            if (dir_toggle === false) {
+                                $('#current_dir').html('&harr;');
+                            }
+                            else {
+                                $('#current_dir').html('&#8597;');
+                            }
+                        });
+
+                        //load event listeners 1/2 sec after game begins
+                        setTimeout(function () {
+                            load_climber_handler();
+                        }, 400);
+                    }
+
+                    //Event listener to start new game
+                    $(document).on('click touchend', (e) => {
+                        if (window.innerWidth > window.innerHeight) {
+                            new_game();
+                            $(document).off('click touchend');
+                        }
+                    });
+
+                    new_game = function new_game() {
+
+                        if (world) {
+                            world.destroy();
+                            $('#cell_container').css({
+                                background: "url('./images/dream.jpg')",
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: 'contain',
+                                backgroundPosition: 'center'
+                            });
+                        }
+
+                        world = Physics(init);
+
+                    };
+
+                    // subscribe to ticker and start looping
+                    subscribe_ticker();
+
+                })
+            }
+        );
+    </script>
+
+</body>
+
+</html>

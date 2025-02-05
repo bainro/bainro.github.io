@@ -1,0 +1,198 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+
+//styles
+
+html{
+    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png) repeat;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -10;
+}
+
+body {
+    background: none;
+    padding:    0;
+    margin:     0;
+    width:      100%;
+    height:     100%;
+    overflow:   hidden;
+    z-index:    -7;
+    font-family: calibri;
+}
+
+#between_lvl_screen{
+    color:        #3c100b;
+    background:   rgba(255, 255, 255, 0.6);
+    z-index:        11;
+    font-size:      25px;
+    font-weight:    600;
+    line-height:    100px;
+    text-align:     center;
+    padding:        0 1em;
+    border-radius:  15px;
+}
+
+.pjs-meta{
+    position:       absolute;
+    bottom:         10px;
+    right:          20px;
+    text-transform: uppercase;
+    font:           20px/1 monospace;
+    margin:         .3em;
+    border-radius:  5px;
+    background:   rgba(255, 255, 255, 0.67);
+    z-index:        2;
+}
+
+#viewport{
+    position: static !important;
+    //background: black;
+    z-index: 10 !important;
+}
+
+#turn{
+    display: none;
+    background:
+        radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0,
+        radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px,
+        radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
+        radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
+        radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
+        radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px,
+        radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
+        radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
+        linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0,
+        linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
+    background-color: #300; 
+    background-size: 100px 100px;
+    #turn_inside{
+        max-width:      100%;
+        text-align:     center;
+        padding:        0 1em;
+        border-radius:  15px;
+        background:   rgba(255, 255, 255, 0.6);
+        line-height:    100px;
+    }
+}
+
+@media (orientation: portrait){
+    #turn{
+        position:       absolute;
+        display:        flex;
+        justify-content:center;
+        align-items:    center;
+        top:            0;
+        left:           0;
+        height:         100%;
+        width:          100%;
+        color:        black;
+        z-index:        10;
+        font-weight:    600;
+        font-size:      1.5em;
+    }
+    #cell_container{
+        max-width:  100%;
+        max-height: 100%;
+        overflow:   hidden;
+        left:       0 !important;
+        top:        0 !important;
+    }
+    #between_lvl_screen{
+        display: none !important;
+    }
+}
+
+#canvas_flex{
+    display:            flex;
+    justify-content:    center;
+    align-items:        center;
+    height:             100%;
+    z-index:            9;
+}
+
+.cell{
+    background:   gray;
+    position:       absolute;
+    z-index:        -2;
+    border:    1px dashed black;
+}
+
+#cell_container{
+    position:           absolute;
+    background:         url('../../images/dream.jpg') no-repeat;
+    background-size:    contain;
+    background-position:center;
+    background-color:   black;
+    z-index:            -2;
+}
+
+#current_dir_container{
+    display:        none;
+    border-radius:  10px;
+    background:   rgba(255, 255, 255, 0.6);
+    top:            5px;
+    left:           5px;
+    text-align:     center;
+    position:       absolute;
+    justify-content: center;
+    padding: .1em;
+    span {
+        max-width:      100%;
+        max-height:     100%;
+        text-shadow:    1px -1px 0 #fff, 1px 1px 1px #000;
+        align-self:     center;
+    }
+}
+
+#timer{
+    display: none;
+    position: absolute;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    text-shadow: 1px -1px 0 #fff, 1px 1px 1px #000;
+    padding: .1em;
+    top:    5px;
+    right:  5px;
+}
+
+#lives_container{
+    display: none;
+    position: absolute;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    color: black;
+    //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: 1px -1px 0 #fff, 1px 1px 1px #000;
+    bottom:    5px;
+    left:  5px;
+    padding: .17em;
+}
+
+#percent{
+    display: none;
+    position: absolute;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    color: black;
+    //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: 1px -1px 0 #fff, 1px 1px 1px #000;
+    bottom:    5px;
+    right:  5px;
+    padding: .1em;
+}
+
+#dir_img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@include mQ (850px) {
+    #timer, #lives_container{
+        padding: 0;
+    }
+}
