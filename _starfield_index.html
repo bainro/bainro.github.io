@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  	<title>Robert Bain Portfolio</title>
+  	<meta charset="utf-8">
+  	<meta name="description" content="He uses neuroscience to build better AI, and is currently studying for a phd in cognitive neuroscience under Bruce McNaughton at UC Irvine.">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="author" content="Robert Bain">
+  	<link rel="stylesheet" href="./css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://rkbain.com/infinite-scroll.pkgd.min.js"></script>
+	<style>
+        @media screen and (max-width: 1080px) and (min-width: 1px) {p {text-align: unset !important; } }
+	@media screen and (min-width: 1px) {#dynamic-neurons {display:none;}}
+	@media screen and (min-width: 1px) {#canvas1 {display:none !important;}}
+        @media screen and (max-width: 738px) {#bio-br {display: none;} }
+	@media screen and (min-width: 1030px){
+            #canvas1 {
+		display: block !important;
+	    }
+            #dynamic-neurons {
+		display: block;
+		height: calc(100% + 12em);
+	        width: 100%;
+		margin: 0;
+		margin-top: -12em;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		z-index: -1;
+	    }
+	    #about.about-me {
+		position: relative;
+		background: none !important;
+		box-shadow: none !important;
+	    }
+	}
+	object {width: 100%; border-width: 0px; height: 550px; margin-bottom: 1em; overflow: hidden; min-height: 400px}
+	embed {min-height: 500px;}
+	<!-- @media screen and (max-width: 500px) {object {height: 550px;}} -->
+        </style>
+</head>
+
+<body>
+	<!--Overlay Menu-->
+	<div id="myNav" class="overlay">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  		<div class="overlay-content">
+    		<a href="#home" onclick="closeNav()">Home</a>
+    		<a href="#about" onclick="closeNav()">About</a>
+    		<a href="#skills" onclick="closeNav()">Skills</a>
+    		<a href="#projects" onclick="closeNav()">Projects</a>
+    		<a href="https://robertbain.pythonanywhere.com" onclick="closeNav()">Blog</a>
+  		</div>
+	</div>
+
+	<!--Hamburger Icon-->
+	<span id="hamburger" onclick="openNav()">
+		<div class="bar1"></div>
+  		<div class="bar2"></div>
+  		<div class="bar3"></div>
+	</span>
+
+	<!--Landing Banner-->
+	<div class="landing-banner" id="home">
+		<p class="intro-text" tabindex="0">...</p>
+		<!--<div id="down-arrow">⇩</div>-->
+	</div>
+
+	<!--"About Me" Section-->
+	<div class="about-me" id="about">
+                <iframe src="./neurons.html" id="dynamic-neurons"></iframe>
+		<div id="bio-1" class="biography">
+			Hi! My name is Robert Bain. I am a Cognitive Neuroscience <!--<br id="bio-br"/>-->PhD student in the McNaughton Lab at UC Irvine.
+			<span id="bio-span"></span>
+		</div>
+		<img id="scar-boi" src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie" tabindex="0">
+		<div id="bio-2" class="biography">
+			At my foundation I am a scientist, educator, and humanist.
+		</div>
+	</div>
+
+	<!--Projects Section-->
+	<div id="projects-bckgnd" style="background: none !important;">
+	    <canvas id='canvas1' style="position: fixed; z-index: -5; top: 0; background: url(../andromeda_cut2.jpg); box-shadow: inset 0px 6px 14px -10px white, inset 0px 1px 0px 0px rgba(255, 255, 255, 0.1); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+	    </canvas>
+	    <div id="projects">
+		<h1>Personal Projects:</h1>
+		<p style="text-align: center !important;" id="resume-github-p"><a href="./resume.pdf" target="_blank" rel="noopener">Resume</a><span id="resume-github-gap"></span><a href="https://github.com/bainro/" target="_blank" rel="noopener">GitHub</a></p>
+		<div class="flex-projects">
+
+			<!--role of bio in ai-->
+			<div class='flex-project-inf'>
+				<!-- This will allow PDFs to be displayed for more mobile users -->
+				<object data="./masters.pdf" type="application/pdf">
+					<embed src="https://drive.google.com/file/d/1Mi_ZpF1EPkE81P4GgWRA1iI0u7BWvOx2/preview?usp=sharing"/>
+				</object>
+				<p>Why are they called <span style="font-style: italic;">artificial</span> neural networks? This paper answers that question by summarizing the influence that biological neural networks have had on ANNs as they became our best perceptual systems in silico. It also documents my attempt to continue the tradition of using neuroscience to empower ANNs.</p>
+			</div>
+
+			<!--ePose-->
+			<div class='flex-project-inf'>
+				<object data="./ePose.pdf" type="application/pdf" id="iframe-epose">
+					<embed src="https://drive.google.com/file/d/1RkqCDSiI_-lIr4DkGOqSjGXCaz60FSqw/preview?usp=sharing"/>
+				</object>
+				<p>Paper on developing 3D object detection algorithms with Deep Convolutional Neural Networks.</p>
+			</div>
+
+			<!--LTH-->
+			<div class='flex-project-inf'>
+				<object data="./loss/paper2.pdf" type="application/pdf">
+					<embed src="https://drive.google.com/file/d/18exJJTWAG9yJ2E_FqhOAuXvvWMSsm_zr/preview?usp=sharing"/>
+				</object>
+				<p>Paper on visualizing the effects that pruning has on deep neural networks' loss landscapes. Desktop demo: <a href="https://rkbain.com/loss/#1" style="text-decoration:none;" target="_blank" rel="noopener">here</a>.</p>
+			</div>
+
+			<!--SpikeWave Jackal-->
+			<!--
+			<div class='flex-project-inf'>
+				<object data="./IROS_2023.pdf" type="application/pdf">
+					<embed src="https://drive.google.com/file/d/12qKqgS4HfI1862f6EAP6oxG0W9s_7tsG/preview?usp=sharing"/>
+				</object>
+				<p>Online, continuous, and neuromorphic path planning on a Clearpath Jackal robotic platform around rough terrain bits of UC Irvine.</p>
+			</div> 
+			-->
+                        
+                        <!-- Harry's 268A final project -->
+                        <div class='flex-project-inf'>
+                        	<object data="IJCNN_2023.pdf" type="application/pdf">
+                                	<embed src="https://drive.google.com/file/d/1SwhTrpOFOGUova01VlHqndEWLFhGESeW/preview?usp=sharing"/> 
+				</object>
+				<p>Simulations of hippocampal replay in a spiking neural network path planner.</p>
+			</div> 
+
+		</div> 
+		<p class="pagination">
+                    <a class="pagination__next" href="inf_index_2.html">2nd page</a>
+                    <a class="pagination__next" href="inf_index_3.html">3rd page</a>
+                    <a class="pagination__next" href="inf_index_4.html">4th page</a>
+                    <a class="pagination__next" href="inf_index_5.html">5th page</a>
+                    <a class="pagination__next" href="inf_index_6.html">6th page</a>
+                    <a class="pagination__next" href="inf_index_7.html">7th page</a>
+                    <a class="pagination__next" href="inf_index_8.html">8th page</a>
+		</p>
+		<div class="blog" style="margin-top: 2em;">Read more about these and other projects on my<br><a href="https://robertbain.pythonanywhere.com" target="_blank" rel="noopener">Blog</a></div>
+	    </div>
+        </div>
+
+	<!--Skills Section-->
+	<div class="skill-section" id="skills">
+		<div class="skills-text">Technologies I Use (last updated 2018):</div>
+		<ul class="skills-list">
+			<li tabindex="0"><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
+			<li><img src="./images/c.svg" title="C language" alt="The C language logo" class="svg"></li>
+			<li><img src="./images/c++.svg" title="C++ language" alt="The C++ language logo" class="svg"></li>
+			<li><img src="./images/java.svg" title="Java language" alt="The Java logo" class="svg"></li>
+			<li><img src="./images/psql.svg" title="PostgreSQL" alt="PostgreSQL logo" class="svg"></li>
+			<li><img src="./images/python.svg" title="Python language" alt="Python logo" class="svg"></li>
+			<li><img src="./images/jquery.svg" title="jQuery" alt="A jquery icon" class="svg"></li>
+			<li><img src="./images/photoshop.svg" title="Photoshop" alt="The Photoshop logo" class="svg"></li>
+			<li><img src="./images/node.svg" title="node.js" alt="The node.js icon" class="svg"></li>
+			<li><img src="./images/express.svg" title="express" alt="An ExpressJS icon" class="svg"></li>
+			<!--<li><img src="./images/django.svg" title="Django" alt="A Django icon" class="svg"></li>-->
+			<li><img src="./images/javascript.svg" title="JavaScript" alt="A JavaScript icon" class="svg"></li>
+			<!--<li><img src="./images/grunt.svg" title="GRUNT Task Manager" alt="The Grunt Logo with 'Grunt' written along the bottom" class="svg"></li>-->
+			<li><img src="./images/git.svg" title="Git" alt="The Git logo" class="svg"></li>
+			<li><img src="./images/socket.svg" title="Socket.io" alt="A Socket.io icon" class="svg"></li>
+			<li><img src="./images/bash.svg" title="Bourne Again SHell" alt="A BASH icon" class="svg"></li>
+			<li><img src="./images/bootstrap.svg" title="Bootstrap 3" alt="A bootstrap 3 logo" class="svg"></li>
+			<li><img src="./images/cli.svg" title="Microsoft Windows Command Line Interface" alt="An icon depicting a Microsoft Window's Command Line Interface" class="svg"></li>
+			<li tabindex="0"><img src="./images/ajax.svg" title="Asynchronous JavaScript And XML" alt="An Ajax icon" class="svg"></li>
+			<li><img src="./images/css3.svg" title="CSS3" alt="A CSS3 icon" class="svg"></li>
+			<li><img src="./images/mysql.svg" title="MySQL" alt="The MySQL logo" class="svg"></li>
+			<li><img src="./images/php.svg" title="PHP" alt="The PHP logo" class="svg"></li>
+			<li><img src="./images/rwd.svg" title="Responsive Web Design" alt="An icon representing Responsive Web Design" class="svg"></li>
+			<li><img src="./images/html5.svg" title="HTML5" alt="An HTML5 icon" class="svg"></li>
+			<li><img src="./images/windows.svg" title="Microsoft Windows OS" alt="Modern Windows Logo" class="svg"></li>
+			<li tabindex="0"><img src="./images/linux.svg" title="Linux OS" alt="An svg of the Linux Penguin that I drew a heart on while learning inkscape" class="svg"></li>
+		</ul>
+	</div>
+
+	<!--Footer-->
+	<div class="footer">
+		<div class="contact-links">
+			<ul>
+				<li><a href="https://www.facebook.com/BainOfTheBerg" title="Friend Me On Facebook!"><img src="./images/fb.png"></a></li>
+				<li><a href="https://twitter.com/rbain13" title="Follow Me On Twitter!"><img src="./images/twitter.png"></a></li>
+				<li><a href="https://stackoverflow.com/users/1707865/robert-bain" title="View My Stack Overflow Profile!"><img src="./images/stack.png"></a></li>
+				<li><a href="https://github.com/bainro" title="View My Github!"><img src="./images/github.png"></a></li>
+			</ul>
+		</div>
+		<div class="copyright" style="color: black;">
+			Copyright Robert Bain 2024
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="underscore.js"></script>
+<script>
+elem = document.querySelector('.flex-projects');
+infScroll = new InfiniteScroll(elem, {
+    path: '.pagination__next',
+    append: '.flex-project-inf',
+    hideNav: '.pagination',
+    history: false,
+});
+
+$(document).ready(function() {
+
+	// start jezzball game after 8 seconds
+	setTimeout(()=>{
+		$("#iframe-jezzball").contents().find("#canvas_flex").click();		
+	}, 8000);
+
+	toggle_play_mtg = (function () {
+		var toggle = false;
+		var mtg = document.getElementById('mtg');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				mtg.play();
+			}
+			else {
+				mtg.pause();
+			}
+		}
+	})();
+
+	toggle_play_builder = (function () {
+		var toggle = false;
+		var builder = document.getElementById('builder');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				builder.play();
+			}
+			else {
+				builder.pause();
+			}
+		}
+	})();
+
+	toggle_play_jezz = (function () {
+		var toggle = false;
+		var jezz = document.getElementById('jezz');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				jezz.play();
+			}
+			else {
+				jezz.pause();
+			}
+		}
+	})();
+
+	$('.skills-list li').height($('.skills-list li').width());
+
+	//Throttled function that resizes the skills section's svg logo height to maintain a 1:1 aspect ratio
+	_.throttle($(window).resize(function(){
+    	$('.skills-list li').height($('.skills-list li').width());
+    	if($('#down-arrow').length){
+    		$('#down-arrow').css("left", ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px");
+    	}
+	}), 500, {trailing: false});
+
+	if($('body').width() >= 500 && $('.landing-banner').height() >= 400){
+		div = document.createElement('div');
+		div.innerHTML = '⇩';
+		div.id = 'down-arrow';
+		$('.landing-banner').append(div);
+		$('#down-arrow').on('click', function(){
+			var theDiff = $('.landing-banner').height() - $('html').scrollTop();
+			$("html").animate({ scrollTop: $('.landing-banner').height() });
+		});
+		div.style.left = ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px";
+	}
+
+	//Makes Hamburger Disappear/Appear on Scroll Events
+	var lastScrollTop = 0;
+	$(window).scroll(function(event){
+    	var st = $(this).scrollTop();
+    	if (st > lastScrollTop){
+       		// downscroll code
+       		document.getElementById("hamburger").style.top="-100px";
+    	} 
+    	else {
+      		// upscroll code
+      		document.getElementById("hamburger").style.top="5px";
+   		}
+   		lastScrollTop = st;
+	});
+
+});
+
+//Menu Overlay Functions
+function openNav() {
+	document.getElementById("myNav").style.height = "100%";
+	document.getElementById("hamburger").style.opacity="0";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+    document.getElementById("hamburger").style.opacity="1";
+}
+
+$("#scar-boi").hover((_)=>{w=$(_.target).width();h=$(_.target).height(); _.target.src = "scar2.jpg"; $(_.target).height(h);$(_.target).width(w)}, (_)=>{_.target.src = "./images/selfie.jpg"});
+
+// star field code
+
+var canvas1 = document.getElementById('canvas1');
+
+canvas1.width = window.innerWidth;
+canvas1.height = window.innerHeight;
+
+var c1 = canvas1.getContext('2d');
+var numStars = 3000;
+var stars = []; //Empty array
+var size = 0.7;
+var fl = canvas1.width;
+var centerX = canvas1.width/2;
+var centerY = canvas1.height/2;
+var speed = 1.6;
+for(var i=0; i<numStars; i++) {
+  stars[i] = new Star();
+}
+
+function Star() {
+  this.x = Math.random()*canvas1.width;    //x axis location
+  this.y = Math.random()*canvas1.height;    //y axis
+  this.z = Math.random()*canvas1.width;    //depth of star
+
+  this.move = function(){
+    this.z = this.z-speed;
+    if(this.z<=0) {
+      this.z = canvas1.width;
+    }
+  }
+
+  this.show = function() {
+    var x, y, s; //x-axis, y-axis, size
+    x = (this.x - centerX) * (fl/this.z);
+    x = x + centerX;
+
+    y = (this.y - centerY ) * (fl/this.z);
+    y=y+centerY;
+
+    s = size * (fl/this.z);
+
+    c1.beginPath();
+    c1.fillStyle = "rgba(245, 255, 192, 1)";
+    // c1.fillStyle = "rgba(232, 232, 232, 1.0)";
+    // c.fillStyle = 'white';
+    c1.arc(x,y,s, 0, Math.PI*2);
+    c1.fill();
+  }
+}
+
+function draw() {
+  canvas1.width = window.innerWidth;
+  canvas1.height = window.innerHeight;
+  c1.fillStyle = "rgba(0, 0, 0, 0.0)";
+  c1.clearRect(0,0, canvas1.width, canvas1.height);
+  for(var i=0; i<numStars; i++) {
+    stars[i].show();
+    stars[i].move();
+  }
+}
+
+function update() {
+  draw();
+  setTimeout(() => {
+  	window.requestAnimationFrame(update);
+	}, "50");
+}
+
+update();
+
+</script>
+
+</body>
+</html>

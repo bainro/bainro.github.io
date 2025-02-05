@@ -1,0 +1,167 @@
+<style>
+body, html {
+  padding: 0;
+  overflow: hidden;
+}
+
+html{
+  background: black; /*rgba(0,0,0,0.95)*/
+}
+
+#ball-container {
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes rays {
+    from {
+       -webkit-filter: hue-rotate(0deg);
+	
+    }
+    to {
+        -webkit-filter: hue-rotate(360deg);
+    }
+}
+
+.ball {
+  position: absolute !important;
+  -webkit-animation: rays 3s infinite linear;
+  cursor: pointer;
+}
+
+/*
+border-top: 0.5em solid transparent;
+border-bottom: 0.5em solid transparent;
+border-right: 0.5em solid transparent;
+border-left: 0.5em solid green;
+width: 0;
+height: 0; 
+*/
+
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<script>
+$(document).ready(function() {
+function Ball(src) {
+  this.x = Math.random() * 96 + 1;
+  this.y = Math.random() * 53 + 1;
+  this.xVelocity = Math.random() / 8 //+ 1;
+  if (Math.random() > 0.5) {
+    this.xVelocity *= -1;
+  }
+  if (Math.random() > 0.5) {
+    this.yVelocity *= -1;
+  }
+  this.yVelocity = Math.random() / 8 //+ 1;
+   	this.element = $("<img class='ball' src=" + src + " style='height:370px;'/>", {
+  });
+  if (src == 'https://rkbain.com/neuron_1.svg'){
+ 	this.element = $("<img class='ball' src=" + src + " style='height:50px;'/>", {
+  });  
+  }
+  if (src == 'https://rkbain.com/neuron_15.svg'){
+ 	this.element = $("<img class='ball' src=" + src + " style='height:50px;'/>", {
+  });  
+  }
+  if (src == 'https://rkbain.com/neuron_14.svg'){
+ 	this.element = $("<img class='ball' src=" + src + " style='height:50px;'/>", {
+  });  
+
+  }
+  
+  var myself = this;
+  
+  // update the x pos, y pos, & potentially the x or y vel.
+  this.update = function() {
+    if (this.pickedUp) {
+        if (!this.element.hasClass("ui-draggable-dragging")) {	
+	    this.pickedUp = false;
+            // get and use the newly dropped x & y positions
+	    this.x = this.element.css("left").slice(0, -2) / $('#ball-container').eq(0).width() * 100;
+	    this.y = this.element.css("top").slice(0, -2) / $('#ball-container').eq(0).height() * 100;
+	}
+        return;
+    }
+    if (this.element.hasClass("ui-draggable-dragging")) {
+        this.pickedUp = true;
+	return
+    }
+    if (myself.x > 96.5 || myself.x < -2.0) 
+    	myself.xVelocity *= -1;
+    if (myself.y > 51.6 || myself.y < -7.5) 
+    	myself.yVelocity *= -1;
+    myself.x = myself.x + myself.xVelocity;
+    myself.y = myself.y + myself.yVelocity;
+  };
+  
+  //this.rotation = 0;
+  this.bRadius = 20 * Math.random() * 100;
+  this.bRadius_bias = 15 * Math.random() * 5;
+  //this.rot_speed = 0.00005 + (Math.random() * 0.0001); 
+  //var roll = Math.random();
+  //this.rot_sign = 1;
+  //if (roll > 0.5) {
+  //  this.rot_sign *= -1;
+  //}
+
+  this.render = function() {
+    this.bRadius += Math.random() * 0.2;
+    if (this.element.hasClass("ui-draggable-dragging")) {
+      myself.element.css({
+        borderColor: "rgba(" + grc() + ") transparent",
+      });
+    }
+    else {
+      myself.element.css({
+        left: myself.x + "%",
+        top: myself.y + "%",
+        borderColor: "rgba(" + grc() + ") transparent",
+        //borderRadius: this.bRadius_bias + Math.sin(this.bRadius) * 23 + "%",
+        // transform: "rotate(" + Math.sin(this.rotation) * 360 + "deg)",
+      });
+    }
+  };
+  
+  $("#ball-container").append(this.element);
+  this.render();
+}
+
+var ballArray = [];
+
+for (var i = 0; i < 100; i++) {
+	j = (i % 15) + 1;
+	ballArray.push(new Ball('https://rkbain.com/neuron_' + j + '.svg'));
+}
+
+$('.ball').draggable();
+
+function draw() {
+	ballArray.forEach(function(ball, index){
+  	ball.update();
+  	ball.render();
+  });
+}
+ // Get Random Color
+function grc() {
+	var colorString = "";
+  for (var i = 0; i < 3; i++) {
+  	colorString += String(Math.round(Math.random() * 255));
+    colorString += ",";
+  }
+  colorString += Math.random();
+	return colorString;
+}
+
+setInterval(draw, 50);
+//setTimeout(draw, 50);
+})
+
+
+
+</script>
+
+<div id="ball-container"></div>

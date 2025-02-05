@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- TEST WAS A HUGE SUCCESS -->
+  	<title>Robert Bain Portfolio</title>
+  	<meta charset="utf-8">
+  	<meta name="description" content="He uses neuroscience to build better AI, and is currently studying for a phd in cognitive neuroscience at UC Irvine.">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="author" content="Robert Bain">
+  	<link rel="stylesheet" href="./css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<style>
+        @media screen and (max-width: 1080px) and (min-width: 1px) {p {text-align: unset !important; } }
+        @media screen and (max-width: 738px) {#bio-br {display: none;} }
+	object {width: 100%; border-width: 0px; height: 550px; margin-bottom: 1em; overflow: hidden; min-height: 400px}
+	embed {min-height: 500px;}
+	<!-- @media screen and (max-width: 500px) {object {height: 550px;}} -->
+        </style>
+</head>
+
+<body>
+	<!--Overlay Menu-->
+	<div id="myNav" class="overlay">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  		<div class="overlay-content">
+    		<a href="#home" onclick="closeNav()">Home</a>
+    		<a href="#about" onclick="closeNav()">About</a>
+    		<a href="#skills" onclick="closeNav()">Skills</a>
+    		<a href="#projects" onclick="closeNav()">Projects</a>
+    		<a href="https://robertbain.pythonanywhere.com" onclick="closeNav()">Blog</a>
+  		</div>
+	</div>
+
+	<!--Hamburger Icon-->
+	<span id="hamburger" onclick="openNav()">
+		<div class="bar1"></div>
+  		<div class="bar2"></div>
+  		<div class="bar3"></div>
+	</span>
+
+	<!--Landing Banner-->
+	<div class="landing-banner" id="home">
+		<p class="intro-text" tabindex="0">Hello!<br> I am Robert Bain, a Web Developer in the beautiful Eugene, Oregon.</p>
+		<!--<div id="down-arrow">⇩</div>-->
+	</div>
+
+	<!--"About Me" Section-->
+	<div class="about-me" id="about">
+		<div id="bio-1" class="biography">
+			Hi! My name is Robert Bain. I am a PhD student in <br id="bio-br"/>Cognitive Neuroscience at UC Irvine.
+			<span id="bio-span"></span>
+		</div>
+		<img id="scar-boi" src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie" tabindex="0">
+		<div id="bio-2" class="biography">
+			At my foundation I am a scientist, educator, and humanist.
+		</div>
+	</div>
+
+	<!--Projects Section-->
+	<div id="projects-bckgnd">
+	    <div id="projects">
+		<h1>Personal Projects:</h1>
+		<p style="text-align: center !important;" id="resume-github-p"><a href="./resume.pdf" target="_blank" rel="noopener">Resume</a><span id="resume-github-gap"></span><a href="https://github.com/bainro/" target="_blank" rel="noopener">GitHub</a></p>
+		<div class="flex-projects">
+
+			<!--role of bio in ai-->
+			<div>
+				<!-- This will allow PDFs to be displayed for more mobile users -->
+				<object data="./masters.pdf" type="application/pdf">
+					<embed src="https://drive.google.com/file/d/1Mi_ZpF1EPkE81P4GgWRA1iI0u7BWvOx2/preview?usp=sharing"/>
+				</object>
+				<p>Why are they called <span style="font-style: italic;">artificial</span> neural networks? This paper answers that question by summarizing the influence that biological neural networks have had on ANNs as they became our best perceptual systems in silico. It also documents my attempt to continue the tradition of using neuroscience to empower ANNs.</p>
+			</div>
+
+			<!--ePose-->
+			<div>
+				<object data="./ePose.pdf" type="application/pdf" id="iframe-epose">
+					<embed src="https://drive.google.com/file/d/1RkqCDSiI_-lIr4DkGOqSjGXCaz60FSqw/preview?usp=sharing"/>
+				</object>
+				<p>Paper on developing 3D object detection algorithms with Deep Convolutional Neural Networks.</p>
+			</div>
+
+			<!--LTH-->
+			<div>
+				<object data="./loss/paper2.pdf" type="application/pdf">
+					<embed src="https://drive.google.com/file/d/18exJJTWAG9yJ2E_FqhOAuXvvWMSsm_zr/preview?usp=sharing"/>
+				</object>
+				<p>Paper on visualizing the effects that pruning has on deep neural networks' loss landscapes. Desktop demo: <a href="https://rkbain.com/loss/#1" style="text-decoration:none;" target="_blank" rel="noopener">here</a>.</p>
+			</div>
+
+			<!--SpikeWave Jackal
+			<div>
+				<object data="./IROS_2023.pdf" type="application/pdf">
+					<embed src="https://drive.google.com/file/d/12qKqgS4HfI1862f6EAP6oxG0W9s_7tsG/preview?usp=sharing"/>
+				</object>
+				<p>Online, continuous, and neuromorphic path planning on a Clearpath Jackal robotic platform around rough terrain bits of UC Irvine.</p>
+			</div> 
+			-->
+		</div>
+		<div class="blog" style="margin-top: 2em;">Read more about these and other projects on my<br><a href="https://robertbain.pythonanywhere.com" target="_blank" rel="noopener">Blog</a></div>
+	    </div>
+        </div>
+
+	<!--Skills Section-->
+	<div class="skill-section" id="skills">
+		<div class="skills-text">Technologies I Use (last updated 2018):</div>
+		<ul class="skills-list">
+			<li tabindex="0"><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
+			<li><img src="./images/c.svg" title="C language" alt="The C language logo" class="svg"></li>
+			<li><img src="./images/c++.svg" title="C++ language" alt="The C++ language logo" class="svg"></li>
+			<li><img src="./images/java.svg" title="Java language" alt="The Java logo" class="svg"></li>
+			<li><img src="./images/psql.svg" title="PostgreSQL" alt="PostgreSQL logo" class="svg"></li>
+			<li><img src="./images/python.svg" title="Python language" alt="Python logo" class="svg"></li>
+			<li><img src="./images/jquery.svg" title="jQuery" alt="A jquery icon" class="svg"></li>
+			<li><img src="./images/photoshop.svg" title="Photoshop" alt="The Photoshop logo" class="svg"></li>
+			<li><img src="./images/node.svg" title="node.js" alt="The node.js icon" class="svg"></li>
+			<li><img src="./images/express.svg" title="express" alt="An ExpressJS icon" class="svg"></li>
+			<!--<li><img src="./images/django.svg" title="Django" alt="A Django icon" class="svg"></li>-->
+			<li><img src="./images/javascript.svg" title="JavaScript" alt="A JavaScript icon" class="svg"></li>
+			<!--<li><img src="./images/grunt.svg" title="GRUNT Task Manager" alt="The Grunt Logo with 'Grunt' written along the bottom" class="svg"></li>-->
+			<li><img src="./images/git.svg" title="Git" alt="The Git logo" class="svg"></li>
+			<li><img src="./images/socket.svg" title="Socket.io" alt="A Socket.io icon" class="svg"></li>
+			<li><img src="./images/bash.svg" title="Bourne Again SHell" alt="A BASH icon" class="svg"></li>
+			<li><img src="./images/bootstrap.svg" title="Bootstrap 3" alt="A bootstrap 3 logo" class="svg"></li>
+			<li><img src="./images/cli.svg" title="Microsoft Windows Command Line Interface" alt="An icon depicting a Microsoft Window's Command Line Interface" class="svg"></li>
+			<li tabindex="0"><img src="./images/ajax.svg" title="Asynchronous JavaScript And XML" alt="An Ajax icon" class="svg"></li>
+			<li><img src="./images/css3.svg" title="CSS3" alt="A CSS3 icon" class="svg"></li>
+			<li><img src="./images/mysql.svg" title="MySQL" alt="The MySQL logo" class="svg"></li>
+			<li><img src="./images/php.svg" title="PHP" alt="The PHP logo" class="svg"></li>
+			<li><img src="./images/rwd.svg" title="Responsive Web Design" alt="An icon representing Responsive Web Design" class="svg"></li>
+			<li><img src="./images/html5.svg" title="HTML5" alt="An HTML5 icon" class="svg"></li>
+			<li><img src="./images/windows.svg" title="Microsoft Windows OS" alt="Modern Windows Logo" class="svg"></li>
+			<li tabindex="0"><img src="./images/linux.svg" title="Linux OS" alt="An svg of the Linux Penguin that I drew a heart on while learning inkscape" class="svg"></li>
+		</ul>
+	</div>
+
+	<!--Footer-->
+	<div class="footer">
+		<div class="contact-links">
+			<ul>
+				<li><a href="https://www.facebook.com/BainOfTheBerg" title="Friend Me On Facebook!"><img src="./images/fb.png"></a></li>
+				<li><a href="https://twitter.com/rbain13" title="Follow Me On Twitter!"><img src="./images/twitter.png"></a></li>
+				<li><a href="https://stackoverflow.com/users/1707865/robert-bain" title="View My Stack Overflow Profile!"><img src="./images/stack.png"></a></li>
+				<li><a href="https://github.com/bainro" title="View My Github!"><img src="./images/github.png"></a></li>
+			</ul>
+		</div>
+		<div class="copyright" style="color: black;">
+			Copyright Robert Bain 2022
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="underscore.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	// start jezzball game after 8 seconds
+	setTimeout(()=>{
+		$("#iframe-jezzball").contents().find("#canvas_flex").click();		
+	}, 8000);
+
+	toggle_play_mtg = (function () {
+		var toggle = false;
+		var mtg = document.getElementById('mtg');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				mtg.play();
+			}
+			else {
+				mtg.pause();
+			}
+		}
+	})();
+
+	toggle_play_builder = (function () {
+		var toggle = false;
+		var builder = document.getElementById('builder');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				builder.play();
+			}
+			else {
+				builder.pause();
+			}
+		}
+	})();
+
+	toggle_play_jezz = (function () {
+		var toggle = false;
+		var jezz = document.getElementById('jezz');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				jezz.play();
+			}
+			else {
+				jezz.pause();
+			}
+		}
+	})();
+
+	$('.skills-list li').height($('.skills-list li').width());
+
+	//Throttled function that resizes the skills section's svg logo height to maintain a 1:1 aspect ratio
+	_.throttle($(window).resize(function(){
+    	$('.skills-list li').height($('.skills-list li').width());
+    	if($('#down-arrow').length){
+    		$('#down-arrow').css("left", ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px");
+    	}
+	}), 500, {trailing: false});
+
+	if($('body').width() >= 500 && $('.landing-banner').height() >= 400){
+		div = document.createElement('div');
+		div.innerHTML = '⇩';
+		div.id = 'down-arrow';
+		$('.landing-banner').append(div);
+		$('#down-arrow').on('click', function(){
+			var theDiff = $('.landing-banner').height() - $('html').scrollTop();
+			$("html").animate({ scrollTop: $('.landing-banner').height() });
+		});
+		div.style.left = ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px";
+	}
+
+	//Makes Hamburger Disappear/Appear on Scroll Events
+	var lastScrollTop = 0;
+	$(window).scroll(function(event){
+    	var st = $(this).scrollTop();
+    	if (st > lastScrollTop){
+       		// downscroll code
+       		document.getElementById("hamburger").style.top="-100px";
+    	} 
+    	else {
+      		// upscroll code
+      		document.getElementById("hamburger").style.top="5px";
+   		}
+   		lastScrollTop = st;
+	});
+
+});
+
+//Menu Overlay Functions
+function openNav() {
+	document.getElementById("myNav").style.height = "100%";
+	document.getElementById("hamburger").style.opacity="0";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+    document.getElementById("hamburger").style.opacity="1";
+}
+
+$("#scar-boi").hover((_)=>{w=$(_.target).width();h=$(_.target).height(); _.target.src = "scar2.jpg"; $(_.target).height(h);$(_.target).width(w)}, (_)=>{_.target.src = "./images/selfie.jpg"});
+
+</script>
+
+</body>
+</html>

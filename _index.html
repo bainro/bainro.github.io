@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  	<title>Robert Bain Portfolio</title>
+  	<meta charset="utf-8">
+  	<meta name="description" content="He uses neuroscience to build better AI, and is currently studying for a phd in cognitive neuroscience at UC Irvine.">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="author" content="Robert Bain">
+  	<link rel="stylesheet" href="./css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<style>
+        @media screen and (max-width: 1080px) and (min-width: 1px) {p {text-align: unset !important; } }
+        @media screen and (max-width: 738px) {#bio-br {display: none;} }
+	object {width: 100%; border-width: 0px; height: 750px; margin-bottom: 1em; overflow: hidden; min-height: 400px}
+	embed {min-height: 500px;}
+	@media screen and (max-width: 500px) {object {height: 550px;}}
+        </style>
+</head>
+
+<body>
+	<!--Overlay Menu-->
+	<div id="myNav" class="overlay">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  		<div class="overlay-content">
+    		<a href="#home" onclick="closeNav()">Home</a>
+    		<a href="#about" onclick="closeNav()">About</a>
+    		<a href="#skills" onclick="closeNav()">Skills</a>
+    		<a href="#projects" onclick="closeNav()">Projects</a>
+    		<a href="https://robertbain.pythonanywhere.com" onclick="closeNav()">Blog</a>
+  		</div>
+	</div>
+
+	<!--Hamburger Icron-->
+	<span id="hamburger" onclick="openNav()">
+		<div class="bar1"></div>
+  		<div class="bar2"></div>
+  		<div class="bar3"></div>
+	</span>
+
+	<!--Landing Banner-->
+	<div class="landing-banner" id="home">
+		<p class="intro-text" tabindex="0">Hello!<br> I am Robert Bain, a Web Developer in the beautiful Eugene, Oregon.</p>
+		<!--<div id="down-arrow">⇩</div>-->
+	</div>
+
+	<!--"About Me" Section-->
+	<div class="about-me" id="about">
+		<div id="bio-1" class="biography">
+			Hi! My name is Robert Bain. I am a PhD student in <br id="bio-br"/>Cognitive Neuroscience at UC Irvine.
+			<span id="bio-span"></span>
+		</div>
+		<img id="scar-boi" src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie" tabindex="0">
+		<div id="bio-2" class="biography">
+			At my foundation I am a scientist, educator, and humanist.
+		</div>
+	</div>
+
+	<!--Projects Section-->
+	<div id="projects-bckgnd">
+	    <div id="projects">
+		<h1>Personal Projects:</h1>
+		<p style="text-align: center !important;" id="resume-github-p"><a href="./resume.pdf" target="_blank" rel="noopener">Resume</a><span id="resume-github-gap"></span><a href="https://github.com/bainro/" target="_blank" rel="noopener">GitHub</a></p>
+		<div class="flex-projects">
+
+			<!-- This will allow PDFs to be displayed for more mobile users -->
+			<div>
+				<object data="./masters.pdf" type="application/pdf" style="width: 100%; border-width: 0px; height: 550px; margin-bottom: 1em; overflow: hidden; min-height: 400px">
+					<embed src="https://drive.google.com/file/d/1Mi_ZpF1EPkE81P4GgWRA1iI0u7BWvOx2/preview?usp=sharing"/ style="min-height:500px;">
+				</object>
+				<p>Why are they called <span style="font-style: italic;">artificial</span> neural networks? This paper answers that question by summarizing the influence that biological neural networks have had on ANNs as they became our best perceptual systems in silico. It also documents my attempt to continue the tradition of using neuroscience to empower ANNs.</p>
+			</div>
+
+			<!--role of bio in ai-->
+			<div>
+				<iframe src="./masters.pdf" id="iframe-masters"></iframe>
+				<p>Why are they called <span style="font-style: italic;">artificial</span> neural networks? This paper answers that question by summarizing the influence that biological neural networks have had on ANNs as they became our best perceptual systems in silico. It also documents my attempt to continue the tradition of using neuroscience to empower ANNs.</p>
+			</div>
+
+			<!--ePose-->
+			<div>
+				<iframe src="./ePose.pdf" id="iframe-epose"></iframe>
+				<p>Paper on developing 3D object detection algorithms with Deep Convolutional Neural Networks.</p>
+			</div>
+
+			<!--LTH-->
+			<div>
+				<iframe src="./loss/paper2.pdf"></iframe>
+				<p>Paper on visualizing the effects that pruning has on deep neural networks' loss landscapes. Desktop demo: <a href="http://rkbain.com/loss/#1" style="text-decoration:none;" target="_blank" rel="noopener">here</a>.</p>
+			</div>
+
+			<!--LossPlot-->
+			<div>
+				<iframe src="./loss/paper.pdf" id="iframe-loss"></iframe>
+				<p>Paper about our user driven process taken while developing a tractable algorithm to visualize trained neural networks. Desktop demo: <a href="http://rkbain.com/loss" style="text-decoration:none;" target="_blank" rel="noopener">here</a>.</p>
+			</div>
+
+			<!--NeuroMatch '22-->
+			<div id="nma">
+				<iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/sRhWfGRvQm0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<p>Here's the final presentation of our theory group in NeuroMatch Academy 2022. We aimed to investigate representational drift in mammalian vision using deep neural networks from Jim Dicarlo's lab at MIT.</p>
+			</div>
+
+			<!-- capstone presentation -->
+			<div id="ann-vs-bnn">
+				<iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/kjvexOeDn7U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<p>My AI Masters capstone presentation at Oregon State University. Neuroscience has made deep learning possible. I make this argument, and show how I followed my own advice by using our contemporary understanding of brains to guide our investigations into their silicon counterparts.</p>
+			</div>
+
+			<!-- Why are they called ANNs? -->
+			<div id="why">
+				<iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/ihwtk_g8JVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<p>I dive into some of the history of neuroscience inspiring artificial neural networks, in particular some of the physical abstractions and computations of the point neuron model.</p>
+			</div>
+
+			<!-- ANN vs BNN -->
+			<div id="ann-vs-bnn">
+				<iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/PaHbGJdz9OE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<p>A presentation going over the evolutionary design that has found its way into the field of Deep Neural Networks. We go over AlexNet's contributions, and question whether the ReLU activation function and backprop are biologically inspired.</p>
+			</div>
+
+			<!--wittgenstein nlp-->
+			<div id="witt">
+				<iframe src="./wittgenstein_nlp.pdf" id="iframe-epose"></iframe>
+				<p>Paper on the philosopher Ludwig Wittgenstein's lasting influence on the field of natural language processing (NLP). His ideas also reach into reinforcement learning, category theory, and dual-inheritance theories of evolution.</p>
+			</div>
+
+			<!-- Jeff Hawkins -->
+			<div id="jeff">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8zRpFMFvIiKF_zgW6NxoN7A" frameborder="0" allowfullscreen>
+				</iframe>
+				<p>This is a presentation on the history of artificial neural networks and neuroscience given on 8/24/2021. The latter part of the talk is mainly inspired by Jeff Hawkin's new book, which details in layman's terms his groups research into neocortical intelligence.</p>
+			</div>
+
+			<!--livewired-->
+			<div id="livewired">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8yBf2axFrmzVohA6UuY5TkU" frameborder="0" allowfullscreen>
+				</iframe>
+				<p>After reading David Eagleman's new <a href="https://www.amazon.com/dp/B07XJKJ8JW/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">Livewired</a> book, I did a deep dive into 3 aspects that computational neuroscientists should find interesting: Potato head model of evolution, reinforcement learning in the brain, and brain architecture search.
+				</p>
+			</div>
+
+			<!--MCS-->
+			<div id="mcs">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8xcHgHzPWM_uRCVYDzMeCjm" frameborder="0" allowfullscreen>
+				</iframe>
+				<p>I took part in the DARPA Machine Common Sense (MCS) reasearch at OSU. We collaborated with roboticists and developmental psychologists from the UoU and NYU. We competed against other research groups at Berkley, MIT/IBM, Stanford, etc.
+                                   Two of the three methods I helped develop at OSU took 1st place. I was the sole developer for Theory of Mind tasks. There's more tasks in the playlist. E.g. intuiting gravity, testing theory of mind, navigating a room looking for a trophy, etc.
+				</p>
+				<!--<p>https://github.com/MCS-OSU/mcs_opics/tree/master/.github/workflows
+				</p>-->
+			</div>
+
+			<!--cones-->
+			<div id="cones2-parent">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8xgn1Y7cuYkgzxpalZ4Bv8b" frameborder="0" allowfullscreen>
+				</iframe>
+				<p>
+				I've worked on Global Formula Racing's (GFR) Autonomous Vehicle team for 2 years. I trained Deep Neural Networks to effectively perceive cones in images. This was a presentation on some of that work from back in May 2021.
+				</p>
+			</div>
+
+			<div id="cones1-parent">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8x4DDpZ_Hof4MC4wpXpx-TS" frameborder="0" allowfullscreen></iframe>
+				</iframe>
+				<p>
+				GFR is a collaboration between OSU and DHBW in Germany. It is a great source of knowledge and friendship. Here's another presentation from back in January 2021.
+				</p>
+			</div>
+
+			<!--GPT3 is dumb-->
+			<div id="gpt3">
+				<iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/7ZWJfu80LDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<p>A snippet of an ongoing discussion with my friends about GPT-3's reasoning abilities (spoilers: it doesn't do well...).</p>
+			</div>
+
+			<!--gh3-->
+			<div id="gh3-parent">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8xH27sNJdL9o8TaSnQG4csW" frameborder="0" allowfullscreen>
+				</iframe>
+				<p>
+				AI Plays Guitar Hero 3 on a Surface Pro 4 & Edge TPU. Still a work in progress. The CNN model does not currently recognize star power but it has still 4 starred this song. Recorded using OBS. Both recording and playing are done on a Surface Pro 4 at 60 FPS. Inference is hardware accelerated using a Google Edge TPU and TFSlim. This ended up taking a little more than 2 weeks to implement.
+				</p>
+			</div>
+
+			<!--A2C Tetris-->
+			<div id="a2c-parent">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8yIiVvN_PgA128sOuj6mx-U" allowfullscreen>
+				</iframe>
+				<p>I trained several TensorFlow models to play Tetris using OpenAI Baseline's A2C implementation. They trained at over 4,000 FPS using a 980ti graphics card. The first video of the playlist is of my best model. It can score a lot of perfect 4 line clears, but it generalizes poorly. The second video shows this model playing 18 games at once. The last video is of another model that does not score as many points per move, but generalizes very well. It frequently clears over 200 lines a game. Everything is controlled by a Raspberry Pi. The power supply was under-rated at the time of the filming. It can actually clear ~40 lines in 11 seconds. Much faster than the human record.
+				</p>
+			</div>
+
+			<!--THICCgenstein-->
+			<div>
+				<iframe class="youtube" src="https://www.youtube.com/embed/fxkeWLhzrz4" frameborder="0" allowfullscreen></iframe>
+				</iframe>
+				<p>This is our team's final presentation for <i>Big Ideas in AI</i> (AI530) at Oregon State University. It is about Wittgenstein's later philosophy and how those ideas have influenced <i>natural language programming</i> (NLP)</p>
+			</div>
+
+			<!--QA-Bot-->
+			<div>
+				<iframe src="./dl3.pdf" id="iframe-qabot"></iframe>
+				<p>Presentation slides about our journey making interactive question and answer bots using deep recurrent neural networks.</p>
+			</div>
+
+			<!--Silent Disco-->
+			<div id="silent-parent">
+				<iframe class="youtube" src="https://www.youtube.com/embed/videoseries?list=PLwKw08_K5I8zQEO8SXO629Z25pkRR3Ac7" allowfullscreen>
+				</iframe>
+				<p>
+				Software solution to throwing your own silent disco that doesn't require renting proprietary radio headphones. Uses virtual frame buffers, ffmpeg, and Janus (built on WebRTC) to duplicate an audio input and broadcast it to multiple other users on the same channel.
+				</p>
+			</div>
+
+			<!--Dreamer-->
+			<div>
+				<img src="./dreamer.gif"">
+				<p><a href="https://arxiv.org/abs/1912.01603" target="_blank" rel="noopener">Hafner et al.</a> made Dreamer, a model that learns a latent representation of reality. It does so in such a way that we can visualize what it learns, helping us build trust in our models. I played around with Ms.Pacman, Tetris, and MuJoCo simulator environments, like the one shown in the gif above (WalkerV2 I think).</p>
+			</div>
+
+			<!-- DNN Snake -->
+			<div id="snake">
+				<iframe class="youtube" src="https://www.youtube.com/embed/tGfB2HOB_m4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+				</iframe>
+				<p>This Deep Neural Network TensorFlow model plays snake on an LED matrix. It could only ever be as good as the python script which generated its training data. People can play on the led too using a keyboard. The current high score is held by the AI though. I trained a better model using the evolutionary machine learning algorithm "NeuroEvolution of Augmenting Topologies" (NEAT), but it is nowhere near as entertaining.
+				</p>
+			</div>
+
+			<div id="pi-matrix">
+				<iframe class="youtube" src="https://www.youtube.com/embed/qPfJmRXBexI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+				</iframe>
+				<p>128x32 LED matrix driven by a Raspberry pi. Both are powered by a 5V switching power supply. There are about 20 different rendering modes including: a digital spectrum analyzer using GPU Accelerated FFT, wireframe rendering engine using C++ Eigen library, and Conway's Game of Life. 
+				</p>
+			</div>
+
+			<!--Alignment Ventures, LLC-->
+			<div>
+				<iframe src="./alignment_ventures" id="iframe-alignment"></iframe>
+				<p>Alignment Ventures, LLC's CEO employed me to develop their website using jQuery, Sass, Bootstrap 4, HTML5, CSS3, PHP, and Apache 2.4.</p>
+			</div>
+
+			<!--MTG Game-->
+			<div>
+				<iframe class="youtube" src="https://www.youtube.com/embed/4B7UmZrUvyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+				</iframe>
+				</iframe>
+				<p>I built this in-browser version of the popular Magic the Gathering card game utilizing Node.js, Socket.io, Express, and jQuery. It is paired with a deck builder app (see next entry).</p>
+			</div>
+
+			<!--MTG Builder-->
+			<div>
+				<iframe class="youtube" src="https://www.youtube.com/embed/EFsPLnKiTG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+				</iframe>
+				<!-- DOESNT WORK CUZ MUST BE SIGNED IN: <iframe id="iframe-builder" src="./mtg/builder"></iframe>-->
+				<p>The in-browser Magic the Gathering game originally had hard coded decks. I eventually made them modular JSON files, and created a 20,000 card MySQL database with which custom decks can be made.</p>
+			</div>
+
+			<!--PhysicsJS JezzBall-->
+			<div>
+				<!--<video controls onclick="toggle_play_jezz();" id="jezz">
+					<source src="./video/jezz.mp4" type="video/mp4"> Your Browser Does Not Support This Video. Update or Try Another Browser.
+				</video>
+				-->
+				<iframe id="iframe-jezzball" src="./PhysicsJS"></iframe>
+				<p>PhysicsJS is an open source, modular, Object-Oriented JavaScript physics engine that I used to make an HTML5 game based off of the 1992 computer game JezzBall. I learned PhysicsJS by reading its online API documentation. This game was developed using mobile first design principles, OOP JavaScript, jQuery, Sass, Illustrator, HTML5, and CSS3. Left mouse click or swipe on mobile to change direction. Can you beat all 5 levels? Click 
+					<a class="demo" href="./PhysicsJS" target="_blank" rel="noopener">here</a> and find out!</p>
+			</div>
+
+
+			<!--Django Blog-->
+			<!--
+			<div>
+				<a href="http://robertbain.pythonanywhere.com" class="project-link" target="_blank" rel="noopener">
+					<img src="./images/blog_3x.jpg" alt="The top of a blog post from 'Robert Bain's Django Blog.'">
+				</a>
+				<p>I made this blog in order to learn Django and to become more familiar with MVC frameworks. I am most proud of the responsive images. They retain their beauty at all screen sizes, and keep the page weight to a minimum. One difficulty I encountered was installing a WYSIWYG editor package. The editor made it so I could more easily include images in my blog posts. I wrote 2 great posts about Nuclear Fusion and the Magellanic Clouds. Go read them by clicking the thumbnail!</p>
+			</div>
+			-->
+
+			<!--MTG Training Guild-->
+			<!--
+			<div>
+				<a href="./mtg_training_guild" class="project-link" target="_blank" rel="noopener">
+					<img src="./images/mtg_3x.jpg" alt="A picture of the logged-in landing page for MTG Training Guild">
+				</a>
+				<p>MTG Training Guild is a light social media site and a recursive abbreviation (like GNU). This will become the front-end for my Magic the Gathering in-browser card game. This application utilizes HTML5, CSS3, Bootstrap, MySQL, PHP, AJAX, and JavaScript. Wonderful example of mobile-first design. Click the thumbnail to be one of the first to sign up!</p>
+			</div>
+			-->
+
+			<!-- stacie dreamwidth page
+			<div>
+				<p>
+					<a href="https://dadvlad.dreamwidth.org/" class="project-link" target="_blank" rel="noopener">
+						Here
+					</a>
+					is a link to a dreamwidth page I made for my partner.
+				</p>
+			</div>
+			-->
+		</div>
+		<div class="blog" style="margin-top: 2em;">Read more about these and other projects on my<br><a href="https://robertbain.pythonanywhere.com" target="_blank" rel="noopener">Blog</a></div>
+	    </div>
+        </div>
+
+	<!--Skills Section-->
+	<div class="skill-section" id="skills">
+		<div class="skills-text">Technologies I Use (last updated 2018):</div>
+		<ul class="skills-list">
+			<li tabindex="0"><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
+			<li><img src="./images/c.svg" title="C language" alt="The C language logo" class="svg"></li>
+			<li><img src="./images/c++.svg" title="C++ language" alt="The C++ language logo" class="svg"></li>
+			<li><img src="./images/java.svg" title="Java language" alt="The Java logo" class="svg"></li>
+			<li><img src="./images/psql.svg" title="PostgreSQL" alt="PostgreSQL logo" class="svg"></li>
+			<li><img src="./images/python.svg" title="Python language" alt="Python logo" class="svg"></li>
+			<li><img src="./images/jquery.svg" title="jQuery" alt="A jquery icon" class="svg"></li>
+			<li><img src="./images/photoshop.svg" title="Photoshop" alt="The Photoshop logo" class="svg"></li>
+			<li><img src="./images/node.svg" title="node.js" alt="The node.js icon" class="svg"></li>
+			<li><img src="./images/express.svg" title="express" alt="An ExpressJS icon" class="svg"></li>
+			<!--<li><img src="./images/django.svg" title="Django" alt="A Django icon" class="svg"></li>-->
+			<li><img src="./images/javascript.svg" title="JavaScript" alt="A JavaScript icon" class="svg"></li>
+			<!--<li><img src="./images/grunt.svg" title="GRUNT Task Manager" alt="The Grunt Logo with 'Grunt' written along the bottom" class="svg"></li>-->
+			<li><img src="./images/git.svg" title="Git" alt="The Git logo" class="svg"></li>
+			<li><img src="./images/socket.svg" title="Socket.io" alt="A Socket.io icon" class="svg"></li>
+			<li><img src="./images/bash.svg" title="Bourne Again SHell" alt="A BASH icon" class="svg"></li>
+			<li><img src="./images/bootstrap.svg" title="Bootstrap 3" alt="A bootstrap 3 logo" class="svg"></li>
+			<li><img src="./images/cli.svg" title="Microsoft Windows Command Line Interface" alt="An icon depicting a Microsoft Window's Command Line Interface" class="svg"></li>
+			<li tabindex="0"><img src="./images/ajax.svg" title="Asynchronous JavaScript And XML" alt="An Ajax icon" class="svg"></li>
+			<li><img src="./images/css3.svg" title="CSS3" alt="A CSS3 icon" class="svg"></li>
+			<li><img src="./images/mysql.svg" title="MySQL" alt="The MySQL logo" class="svg"></li>
+			<li><img src="./images/php.svg" title="PHP" alt="The PHP logo" class="svg"></li>
+			<li><img src="./images/rwd.svg" title="Responsive Web Design" alt="An icon representing Responsive Web Design" class="svg"></li>
+			<li><img src="./images/html5.svg" title="HTML5" alt="An HTML5 icon" class="svg"></li>
+			<li><img src="./images/windows.svg" title="Microsoft Windows OS" alt="Modern Windows Logo" class="svg"></li>
+			<li tabindex="0"><img src="./images/linux.svg" title="Linux OS" alt="An svg of the Linux Penguin that I drew a heart on while learning inkscape" class="svg"></li>
+		</ul>
+	</div>
+
+	<!--Footer-->
+	<div class="footer">
+		<div class="contact-links">
+			<ul>
+				<li><a href="https://www.facebook.com/BainOfTheBerg" title="Friend Me On Facebook!"><img src="./images/fb.png"></a></li>
+				<li><a href="https://twitter.com/rbain13" title="Follow Me On Twitter!"><img src="./images/twitter.png"></a></li>
+				<li><a href="https://stackoverflow.com/users/1707865/robert-bain" title="View My Stack Overflow Profile!"><img src="./images/stack.png"></a></li>
+				<li><a href="https://github.com/bainro" title="View My Github!"><img src="./images/github.png"></a></li>
+			</ul>
+		</div>
+		<div class="copyright" style="color: black;">
+			Copyright Robert Bain 2021
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="underscore.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	// start jezzball game after 8 seconds
+	setTimeout(()=>{
+		$("#iframe-jezzball").contents().find("#canvas_flex").click();		
+	}, 8000);
+
+	toggle_play_mtg = (function () {
+		var toggle = false;
+		var mtg = document.getElementById('mtg');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				mtg.play();
+			}
+			else {
+				mtg.pause();
+			}
+		}
+	})();
+
+	toggle_play_builder = (function () {
+		var toggle = false;
+		var builder = document.getElementById('builder');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				builder.play();
+			}
+			else {
+				builder.pause();
+			}
+		}
+	})();
+
+	toggle_play_jezz = (function () {
+		var toggle = false;
+		var jezz = document.getElementById('jezz');
+		return function () {
+			toggle = !toggle;
+			if (toggle) {
+				jezz.play();
+			}
+			else {
+				jezz.pause();
+			}
+		}
+	})();
+
+	$('.skills-list li').height($('.skills-list li').width());
+
+	//Throttled function that resizes the skills section's svg logo height to maintain a 1:1 aspect ratio
+	_.throttle($(window).resize(function(){
+    	$('.skills-list li').height($('.skills-list li').width());
+    	if($('#down-arrow').length){
+    		$('#down-arrow').css("left", ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px");
+    	}
+	}), 500, {trailing: false});
+
+	if($('body').width() >= 500 && $('.landing-banner').height() >= 400){
+		div = document.createElement('div');
+		div.innerHTML = '⇩';
+		div.id = 'down-arrow';
+		$('.landing-banner').append(div);
+		$('#down-arrow').on('click', function(){
+			var theDiff = $('.landing-banner').height() - $('html').scrollTop();
+			$("html").animate({ scrollTop: $('.landing-banner').height() });
+		});
+		div.style.left = ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px";
+	}
+
+	//Makes Hamburger Disappear/Appear on Scroll Events
+	var lastScrollTop = 0;
+	$(window).scroll(function(event){
+    	var st = $(this).scrollTop();
+    	if (st > lastScrollTop){
+       		// downscroll code
+       		document.getElementById("hamburger").style.top="-100px";
+    	} 
+    	else {
+      		// upscroll code
+      		document.getElementById("hamburger").style.top="5px";
+   		}
+   		lastScrollTop = st;
+	});
+
+});
+
+//Menu Overlay Functions
+function openNav() {
+	document.getElementById("myNav").style.height = "100%";
+	document.getElementById("hamburger").style.opacity="0";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+    document.getElementById("hamburger").style.opacity="1";
+}
+
+$("#scar-boi").hover((_)=>{w=$(_.target).width();h=$(_.target).height(); _.target.src = "scar2.jpg"; $(_.target).height(h);$(_.target).width(w)}, (_)=>{_.target.src = "./images/selfie.jpg"});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+<style>
+  .article {
+    background-color: blue;
+    margin: 1em;
+    height: 10em;
+    color: pink;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="article-feed">
+  <!-- .articles will be added to .article-feed -->
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+  <article class="article">...</article>
+</div>
+
+<!-- pagination has path -->
+<p class="pagination">
+  <a class="pagination__next" href="page2.html">2nd page</a>
+  <a class="pagination__next" href="page3.html">3rd page</a>
+</p>
+</body>
+<script>
+  elem = document.querySelector('.article-feed');
+  infScroll = new InfiniteScroll(elem, {
+    path: '.pagination__next',
+    append: '.article',
+    /*status: '.scroller-status',*/
+    hideNav: '.pagination',
+    history: false,
+  });
+</script>
+</html>
