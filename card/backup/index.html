@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        html, body {
+            width: 720px;
+            height: 540px;
+            margin: 0;
+            position: relative;
+        }
+        #board {
+            width: 100%;
+            height: 100%;
+            perspective: 600px;
+        }
+        #background-color {
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007e2e', endColorstr='#005e2e',GradientType=0 );
+            background-image: radial-gradient(ellipse closest-corner, #018801 1%, #015601 69%, #003400);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+        #background-texture {
+            width: 100%;
+            height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .front-inner {
+            width: 100%;
+            height: 100%;
+            /* background-color: #93191c; */
+            /* background-color: #000080; */
+            /* background-color: #044f8d; */
+            background-color: #192241;
+            background-image: url(./card_back.svg);
+            background-size: cover;
+            background-image:   repeating-linear-gradient(
+                                    45deg, 
+                                    transparent 1%, 
+                                    #fff 1%, 
+                                    #fff 2%, 
+                                    #00000000 2%, 
+                                    #00000000 9% 
+                                ), repeating-linear-gradient(
+                                    135deg, 
+                                    transparent 1%, 
+                                    #fff 1%, 
+                                    #fff 2%, 
+                                    #00000000 2%, 
+                                    #00000000 9% 
+                                );
+            border-radius: 7%;
+            /* box-shadow: 1px 1px 10px 0px #000; */
+        }
+        .front-inner:hover {
+            /* box-shadow: none; */
+        }
+        .front-border {
+            width: 100%;
+            height: 100%;
+            padding: 3.8%;
+            border-radius: 7%;
+            background: white;
+            position: absolute;
+            /* box-shadow: 5px 5px 18px 0px #000; */
+            box-shadow: 5px 5px 18px 0px #000, inset 1px 1px 4px 0px #000, inset -1px -1px 4px 0px #000;
+        }
+        .front-border:hover {
+            /* background: yellow; */
+            background: #f9b633;
+            /* transition: background-color 150ms linear; */
+            box-shadow: 5px 5px 18px 0px #000, inset 1px 1px 2px 0px #000, inset -1px -1px 2px 0px #000;
+        }
+        .logo {
+            height: 66%;
+            width: 66%;
+            position: absolute;
+            top: 21%;
+            left: 17%;
+            background: url(./logo.png);
+            background-size: contain;
+            background-repeat: no-repeat no-repeat;
+        }
+        .card {
+            width: 16%;
+            height: 24%;
+            position: absolute;
+            transform-style: preserve-3d; 
+            transform-origin: center right;
+            transition: transform 1s;
+            cursor: pointer;
+        }
+        .front, .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+        }
+        .front {
+            z-index: 2;
+        }
+        .back {
+            z-index: 1;
+            background: #000;
+            transform: rotateY(180deg);
+        }
+        .card.is-flipped {
+            transform: translateX(-100%) rotateY(-180deg);   
+        }
+        .card.is-flipped-ie9 .front {
+            visibility: hidden; 
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="background-color"></div>
+    <div id="background-texture"></div>
+    <div id="board">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="front">
+                <div class="front-border">
+                    <div class="front-inner">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="front">
+                <div class="front-border">
+                    <div class="front-inner">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="front">
+                <div class="front-border">
+                    <div class="front-inner">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="front">
+                <div class="front-border">
+                    <div class="front-inner">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="front">
+                <div class="front-border">
+                    <div class="front-inner">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="front">
+                <div class="front-border">
+                    <div class="front-inner">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="./interact.min.js"></script>
+    <script>
+
+/*
+
+Flip card over both axis. Back of card holds response text.  
+Rectangular prism indented into the page.
+Have card pattern be picture tag (polyfill for ie9?)
+Response text can be google web fonts (gotta check ie9 restrictions on this too)
+Card could fit perfectly into category hole
+When card flips over axis the whole would be gone,
+and when the card goes off screen (however) the hole could appear
+very small and expand back to the full category size.
+Need to fix .card size
+
+
+*/
+
+        var dragging = false;
+
+        var test = document.getElementsByClassName("card");
+        for(var i = 0; i < test.length; i++) {
+            test.item(i).style.top = 3 + 1.5 * i + "%";
+            test.item(i).style.left = 3 + 1.25 * i + "%";
+        }
+
+        var zIndexIndex = 10;
+
+        interact('.card').draggable({
+            inertia: false,
+            restrict: {
+                restriction: "parent",
+                endOnly: true,
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            },
+            onmove: meow,
+            onstart: start,
+            onend: end
+        });
+        
+        function start(event) {
+            var target = event.target;
+            target.style.transition = "none";
+            target.style.zIndex = zIndexIndex++;
+            dragging = true;
+        }
+        
+        function end(event) {
+            var target = event.target;
+            target.style.transition = "transform 1s";
+            setTimeout(function(){dragging=false;},50);
+            //dragging = false;
+        }
+
+        function meow(event) {
+            var target = event.target,
+                x = (parseFloat(target.style.left) || 0) + event.dx/7.2,
+                y = (parseFloat(target.style.top) || 0) + event.dy/5.4;
+
+            target.style.left = x + '%';
+            target.style.top = y + '%';
+
+            // update the posiion attributes
+            target.setAttribute('left', x);
+            target.setAttribute('top', y);
+        }
+    </script>
+
+    <!--[if !IE]>-->
+        <script>
+            // need to apply this to all .card instead of just the first in the DOM
+            var card = document.querySelector('.card');
+                card.addEventListener( 'click', function() {
+                if (!dragging) {
+                    card.classList.toggle('is-flipped');
+                }
+            });
+        </script>
+    <!--<![endif]-->
+</body>
+</html>

@@ -1,0 +1,216 @@
+/* 
+
+https://codepen.io/futekov/pen/szibL 3d parallax effect
+
+*/
+
+html, body {
+    width: 720px;
+    height: 540px;
+    /* width: 1296px;
+    height: 972px; */
+    margin: 0;
+    position: relative;
+}
+
+#board {
+    width: 100%;
+    height: 100%;
+    perspective: 600px;
+}
+
+#background-color {
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007e2e', endColorstr='#005e2e',GradientType=0 );
+    background-image: radial-gradient(ellipse closest-corner, #018801 1%, #015601 69%, #003400);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+#background-texture {
+    width: 100%;
+    height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.front-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #192241;
+    background-image: url(./card_back.svg);
+    background-size: auto;
+    background-image:   
+        repeating-linear-gradient(
+            45deg, 
+            transparent 1%, 
+            #fff 1%, 
+            #fff 2%, 
+            #00000000 2%, 
+            #00000000 9% 
+        ), repeating-linear-gradient(
+            135deg, 
+            transparent 1%, 
+            #fff 1%, 
+            #fff 2%, 
+            #00000000 2%, 
+            #00000000 9% 
+        );
+    background-color: #001047; /* #192241 #001457 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.14'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='88' viewBox='0 0 80 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73zM54 58v4.696c-5.574 1.316-10.455 4.428-14 8.69-3.545-4.262-8.426-7.374-14-8.69V58h-5.993C12.27 58 6 51.734 6 44c0-7.732 6.275-14 14.007-14H26v-4.696c5.574-1.316 10.455-4.428 14-8.69 3.545 4.262 8.426 7.374 14 8.69V30h5.993C67.73 30 74 36.266 74 44c0 7.732-6.275 14-14.007 14H54zM42 88c0-9.94 8.06-18 18-18h2v-4.09c8.016-.722 14.787-5.738 18-12.73v7.434c-3.545 4.262-8.426 7.374-14 8.69V74h-5.993C52.275 74 46 80.268 46 88h-4zm-4 0c0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73v7.434c3.545 4.262 8.426 7.374 14 8.69V74h5.993C27.73 74 34 80.266 34 88h4zm4-88c0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73v-7.434c-3.545-4.262-8.426-7.374-14-8.69V14h-5.993C52.27 14 46 7.734 46 0h-4zM0 34.82c3.213-6.992 9.984-12.008 18-12.73V18h2c9.94 0 18-8.06 18-18h-4c0 7.732-6.275 14-14.007 14H14v4.696c-5.574 1.316-10.455 4.428-14 8.69v7.433z' fill='%23fbd074' fill-opacity='0.78' fill-rule='evenodd'/%3E%3C/svg%3E");
+    border-radius: inherit;
+    background-color: #172d66;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0C6.716 0 0 6.716 0 15c8.284 0 15-6.716 15-15zM0 15c0 8.284 6.716 15 15 15 0-8.284-6.716-15-15-15zm30 0c0-8.284-6.716-15-15-15 0 8.284 6.716 15 15 15zm0 0c0 8.284-6.716 15-15 15 0-8.284 6.716-15 15-15z' fill='%23001047' fill-opacity='0.63' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.front-border {
+    width: 92.5%;
+    height: 93.3%;
+    padding: 3.8%;
+    /* background: white; */
+    background: #f9b633;
+    position: absolute;
+    /* box-shadow: 5px 5px 18px 0px #000, inset 1px 1px 4px 0px #000, inset -1px -1px 4px 0px #000; */
+    box-shadow: inset 1px 1px 4px 0px #000, inset -1px -1px 4px 0px #000;
+    border-radius: inherit;
+}
+
+.front-border:hover {
+    /* background: #f9b633; */
+    /* transition: background-color 150ms linear; */
+    /* box-shadow: 15px 5px 18px 0px #000, inset 1px 1px 2px 0px #000, inset -1px -1px 2px 0px #000; */
+}
+
+.logo {
+    height: 66%;
+    width: 66%;
+    position: absolute;
+    top: 21%;
+    left: 17%;
+    background: url(./logo.png);
+    background-size: contain;
+    background-repeat: no-repeat no-repeat;
+}
+
+.card {
+    width: 17.19%;
+    height: 26%;
+    position: absolute;
+    transform-style: preserve-3d; 
+    transform-origin: center center;
+    transition: transform 0.66s ease-in-out 0.5s, left 0.3s, top 0.3s;
+    cursor: pointer;
+    border-radius: 7%;
+    touch-action: none;
+    -ms-touch-action: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: inherit;
+}
+
+.front {
+    z-index: 2;
+    box-shadow: 5px 5px 18px 0px;
+    transition: transform .3s;
+}
+
+.enabled.card .front:hover {
+    transform: rotateY(-10deg);
+}
+
+.front:active {
+    transform: none;
+}
+
+.back {
+    box-shadow: 5px 5px 18px 0px #000;
+    z-index: 1;
+    background: #0eff00;
+    transform: rotateY(180deg);
+    font-family: cinzel, serif;
+    font-size: 2em;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card.is-flipped {
+    transform: rotateY(-180deg);   
+}
+
+.card.is-flipped-ie9 .front {
+    visibility: hidden; 
+}
+
+.wrong.card > .back {
+    color: black;
+}
+
+.cat {
+    border-radius: 7%;
+    width: 17.1%;
+    height: 25.97%;
+    position: absolute;
+    background: #ffffffdb;
+    box-shadow: 1px 1px 10px 0px #000, -1px -1px 10px 0px #000;
+}
+
+.zone-texture {
+    position: absolute;
+    top: 2.8%;
+    left: 3.1%;
+    width: 86.5%;
+    height: 88%;
+    border: white solid 5px;
+    border-radius: 10%;
+    background: url(https://www.transparenttextures.com/patterns/felt.png);
+    background-size: cover;
+    box-shadow: inset 2px 2px 10px 0px #000;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.zone-inner-border {
+    position: absolute;
+    top: 2.8%;
+    left: 3.1%;
+    width: 86.5%;
+    height: 88%;
+    border: #bdbcbc solid 5px;
+    border-radius: 10%;
+    z-index: 1;
+    box-shadow: inset 2px 2px 10px 0px #000;
+}
+
+.zone-color {
+    background: #6b0000;
+    height: 100%;
+    z-index: -1;
+}
+
+.unselectable-text {
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none;
+}
