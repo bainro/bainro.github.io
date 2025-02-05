@@ -1,0 +1,626 @@
+body, html {
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 12px;
+  color: #424242;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0; 
+}
+
+header, nav, footer, section, article, div {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+a {
+  display: inline-block;
+  min-height: 48px;
+  min-width: 48px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*
+ *
+ * Common
+ * 
+ */
+
+.news__more {
+  float: right;
+  font-size: .8em;
+  color: #333;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+a.news__more:hover {
+  text-decoration: underline;
+}
+
+/*
+ *
+ * Header
+ *
+ */
+
+.header {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  min-height: 56px;
+  transition: min-height 0.3s;
+}
+
+.header__inner {
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header__logo {
+  height: 72px;
+  margin-right: .95em;
+  vertical-align: top;
+  margin-top: 12px;
+}
+
+.header__title {
+  font-weight: 400;
+  font-size: 2.22em;
+  margin-top: 28px;
+  display: inline-block;
+  text-shadow: 2px 2px rgba(0,0,0,0.24);
+}
+
+
+/*
+ *
+ * Top Level Navigation
+ *
+ */
+
+.nav {
+  /*width: 800px;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav__list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__item {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #616161;
+  line-height: 48px;
+  margin: auto;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+  color: #212121;
+}
+
+
+/*
+ *
+ * Main
+ *
+ */
+
+main {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+/*
+ *
+ * Content
+ *
+ */
+
+
+/*
+ *
+ * Hero
+ *
+ */
+
+.hero {
+  float: left;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  background-image: url("./images/dog.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; 
+  padding-top: 36vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hero article {
+  box-sizing: border-box;
+  bottom: 0;
+  height: 40%;
+  width: 100%;
+  color: #fff;
+  padding: 1em;
+}
+
+#description-shadow {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.hero:hover > #description-shadow {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#description-shadow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/*
+ *
+ * Top News
+ *
+ */
+
+.top-news {
+  float: right;
+  width: 100%;
+  max-width: 100%;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 0 1em;
+}
+
+.news__title {
+  font-weight: 400;
+  border-bottom: 1px solid #E0E0E0;
+  line-height: 48px;
+  font-size: 16px;
+  min-height: 48px;
+
+}
+
+.top-news__item {
+  border-bottom: 1px solid #E0E0E0;
+  padding: 1em 0;    display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+.top-news__item:before {
+  content: "» ";
+  font-size: 1.1em;
+}
+
+.top-news__item:last-child {
+  border-bottom: none;
+}
+
+.top-news__item a {
+  text-decoration: none;
+  color: #666;
+  width: calc(100vw - 1.1em - 20px);
+  display: flex;
+  align-items: center;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+.top-news__item a:hover,
+.top-news__item a:active {
+  text-decoration: underline;
+}
+
+
+/*
+ *
+ * Sport Scores
+ *
+ */
+
+.scores {
+  width: 100%;
+  max-width: 100%;
+  float: left;
+  border-bottom:1px solid #E0E0E0;
+}
+
+.scores__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scores__table th,
+.scores__table td {
+  padding: 1em; 
+}
+
+.scores__table th {
+  color: #fff;
+  font-weight: 300;
+  background-color: #78909C;
+}
+
+.scores__table tr:nth-child(odd) td {
+  background-color: #fff;
+}
+
+.scores__table tr:nth-child(even) td {
+  background-color: #eceff1;
+}
+
+.scores__table td.winner {
+  font-weight: bold;
+}
+
+.scores__table td:nth-child(3) {
+  text-align: right;
+}
+
+.scores__table td:nth-child(2),
+.scores__table td:nth-child(5) {
+  text-align: center;
+}
+
+/*
+ *
+ * Weather
+ *
+ */
+
+.weather {
+  float: right;
+  width: 100%;
+  max-width: 100%;
+  padding: 1em 1em 0.5em 1em;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.weather__location {
+  display: block;
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.weather__desc {
+  display: block;
+  font-size: 1.2em;
+}
+
+.weather__today {
+  width: 60%;
+  vertical-align: middle;
+}
+
+.weather__today__image {
+  vertical-align: middle
+}
+
+.weather__today__temp {
+  font-size: 3em;
+}
+
+.weather__today__deg {
+  font-size: 2em;
+  display: inline;
+}
+
+.weather__next__item {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+}
+
+.weather__next__item span {
+  display: block;
+}
+
+.weather__next__image {
+  width: 100%;
+}
+
+
+/*
+ *
+ * Weather
+ *
+ */
+
+.recent-news {
+  clear: both;
+  padding: 0 1em 1em 1em;
+}
+
+.snippet {
+  clear: both;
+  margin: 0 0 1.4em 0;
+}
+
+.snippet__thumbnail {
+  width: 35%;
+  float: right;
+  margin-left: .5em;
+}
+
+.snippet__title {
+  font-weight: 500;
+}
+
+.snippet__title a {
+  text-decoration: none;
+  color: #666;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.41);
+  padding-bottom: .4em;
+}
+
+.snippet__title a:hover,
+.snippet__title a:active {
+  text-decoration: underline;
+}
+
+.snippet p {
+  margin-top: 0;
+}
+
+
+/*
+ *
+ * Footer
+ *
+ */
+
+footer {
+  border-top: 1px solid #E0E0E0;
+  width: 100%;
+}
+
+footer li {
+  display: inline-block;
+  width: 32.5%;
+  margin: 0 0em;
+}
+
+footer a {
+  text-decoration: none;   
+  color: #333;
+  width: 100%;
+  text-align: center;
+  line-height: 48px;
+}
+
+/*
+ *
+ * Media Queries
+ *
+ */
+
+@media screen and (min-width: 450px){
+
+.nav a {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.snippet__title a {
+  font-size: 1.5em;
+}
+
+.snippet p {
+  font-size: 1.5em;
+}
+
+.top-news__item a {
+  font-size: 1.3em;
+  font-family: Georgia;
+}
+
+.news__title {
+  font-size: 1.7em;
+}
+
+footer a {
+  font-size: 1.31em;
+}
+
+.snippet__thumbnail {
+  float: left;
+  margin-left: 0;
+  margin-right: .5em;
+}
+
+}
+
+@media screen and (min-width: 500px) {
+
+.header__inner {
+  max-width: 415px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header__title {
+  font-size: 3em;
+  margin-top: 25px;
+  text-shadow: 2px 2px rgba(0,0,0,0.41);
+}
+
+}
+
+@media screen and (min-width: 700px) {
+
+body, html {
+  max-width: 100%;
+}
+
+.header__title {
+  font-family: "Times New Roman";
+}
+
+section.recent-news {
+  max-width: 100%;
+  order: 3;
+}
+
+section.hero {
+  max-width: 50%;
+  order: 1;
+}
+
+section.weather {
+  max-width: 40%;
+  order:5;
+  float: none;
+}
+
+section.top-news {
+  max-width: 50%;
+  order: 2;
+  margin:auto;
+}
+
+section.scores {
+  float:none;
+  order: 4;
+  max-width: 60%;
+}
+
+section.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__inner {
+  max-width: 510px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header__title {
+  font-size: 4em;
+  margin-top: 19px;
+  text-shadow: 3px 3px rgba(0,0,0,0.24);
+}
+
+.snippet__thumbnail {
+  width: 20%;
+}
+
+.snippet p {
+  font-size: 1.5em;
+  letter-spacing: .06em;
+  line-height: 1.16em;
+}
+
+footer a {
+  font-size: 1.61em;
+}
+
+}
+
+@media screen and (min-width: 850px) {
+
+ul {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.snippet {
+  margin: 0;
+  max-width: calc((100vw - 6em)/2);
+  padding: .5em;
+}
+
+.snippet__title a {
+  line-height: 48px;
+  display: block;
+  text-align: center;
+}
+
+.snippet__thumbnail {
+  width: 100%;
+  margin: auto;
+  display: block;
+  padding-bottom: 1em;
+  float: none;
+}
+
+.snippet p {
+  font-size: 16px;
+  letter-spacing: initial;
+  line-height: 1.16em;
+}
+
+.top-news__item {
+  max-width: 100%;
+}
+
+.order_two {
+  order: 2;
+}
+
+}
+
+@media screen and (min-width:1050px) {
+
+body {
+  max-width: 1050px;
+}
+
+#recent-news {
+  max-width: 1050px;
+}
+
+.snippet {
+  max-width: calc((100% - 2em)/2);
+}
+
+tbody {
+  font-size: 1.5em;
+}
+
+.scores__table th {
+  font-size: 1.5em;
+}
+
+}

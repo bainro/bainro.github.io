@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SoundJS Pan & Vol Demo</title>
+</head>
+<body>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script>
+        var music,
+            c = createjs,
+            queue = new c.LoadQueue();
+
+        queue.installPlugin(c.Sound);
+        queue.loadFile({src: "./sound/mario.mp3", id: "music"});
+
+        queue.on("complete", function (_evt) {
+            music = c.Sound.play("music", {loop: -1});
+        })
+
+        document.addEventListener('mousemove', function (evt) {
+            if ( !music ) { return; }
+            music.pan = evt.clientX / window.innerWidth*2-1;
+            music.volume = evt.clientY / window.innerHeight;
+        })
+    </script>
+</body>
+</html>

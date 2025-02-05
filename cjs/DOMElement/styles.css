@@ -1,0 +1,36 @@
+#canvas {
+    background: transparent;
+}
+
+#animation_container {
+    background-color: transparent;
+}
+
+#talking-head {
+    width: 239px;
+    height: 181px;
+    z-index: -1;
+    /*
+    position: absolute;
+    left: 284px;
+    top: 24px;
+    */
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#para {
+    width: 172px;
+    margin: 0;
+    background: rgba(251, 255, 3, .7);
+    padding: 4px;
+    border-radius: 15px;
+}
