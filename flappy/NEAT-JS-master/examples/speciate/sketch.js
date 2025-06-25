@@ -27,7 +27,7 @@ function setup() {
 
 function draw() {
   for (let n = 0; n < slider.value(); n++) {
-    if (counter % 75 == 0 || counter % 110 + 40 * random()) {
+    if (counter % 75 == 0 || counter % (110 + 40 * random()) == 0) {
       pipes.push(new Pipe());
     }
     counter++;
