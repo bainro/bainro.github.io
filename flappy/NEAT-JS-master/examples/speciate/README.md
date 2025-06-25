@@ -1,5 +1,5 @@
-simple demonstration of speciation via natural selection
+esimple demonstration of speciation via natural selection
 
 [Demo](https://rkbain.com/flappy/NEAT-JS-master/examples/speciate/flappy.html)
 
-<a href="https://rkbain.com/flappy/NEAT-JS-master/examples/speciate/flappy.html" target="_blank">Demo</a>
+<a href="https://rkbain.com/flappy/NEAT-JS-master/examples/speciate/flappy.html" target="_blank" rel="noopener noreferrer">Demo</a>
