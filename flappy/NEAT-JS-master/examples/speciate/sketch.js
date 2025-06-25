@@ -36,7 +36,7 @@ function draw() {
       pipes[i].update();
 
       for (let j = birds.length - 1; j >= 0; j--) {
-        if (pipes[i].hits(birds[j]) || counter > 750) {
+        if (pipes[i].hits(birds[j]) || counter > 2000) {
           birds[j].dead = true;
         }
       }
