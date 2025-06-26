@@ -124,6 +124,18 @@ function NEAT(config) {
 		this.creatures[index].setInputs(array);
 	}
 
+	this.getColors = function () {
+		let result = [];
+		for (let i = 0; i < this.creatures.length; i++) {
+			let genes = this.creatures[i].flattenGenes();
+			let rgb = genes.slice(0, 3);
+			// convert to 0-255
+			rgb = rgb.map(v => Math.round((v + 1) * 127.5));
+			result.push(rgb);
+		}
+		return result;
+	}
+
 	this.export = function (index) {
 		let data = [];
 		data.push(JSON.parse(JSON.stringify(this.exportModel)));
