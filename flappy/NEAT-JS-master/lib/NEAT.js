@@ -18,6 +18,7 @@ function NEAT(config) {
 	this.mutationRate = config.mutationRate || 0.05;
 	this.crossoverMethod = config.crossoverMethod || crossover.RANDOM;
 	this.mutationMethod = config.mutationMethod || mutate.RANDOM;
+	this.rgb = config.RGBmode || false;
 	this.generation = 0;
 
 	for (let i = 0; i < this.model.length; i++) { // Sanitize the model.
