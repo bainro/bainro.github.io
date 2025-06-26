@@ -1,4 +1,4 @@
-const TOTAL = 35 // 1000;
+const TOTAL = 60 // 1000;
 let birds = [];
 let pipes = [];
 let counter = 0;
