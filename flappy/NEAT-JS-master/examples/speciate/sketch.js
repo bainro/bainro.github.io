@@ -93,14 +93,22 @@ function draw() {
 	  if (gen > 20) {
 		  neat.storeGen();
 	  }
-      neat.doGen();
+	  let start_gen = null;
+	  let end_gen = null;
+	  if (gen > 50) {
+		  console.log('pass');
+		  // need to make start and end_gen fx of gen
+		  // start_gen = ...
+		  // end_gen = ...
+	  }
+	  neat.doGen(start_gen, end_gen);
 	  console.log("avg score: " + totalScore/TOTAL);
 	  gen += 1;
 	  // update bird colors
 	  let colors = neat.getColors();
 	  for (let i = 0; i < TOTAL; i++) {
-    	birds[i].setColors(colors[i]);
-  	  }
+	    birds[i].setColors(colors[i]);
+	  }
     }
   }
 
