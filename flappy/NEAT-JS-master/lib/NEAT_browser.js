@@ -7,6 +7,8 @@
 function NEAT(config) {
 	this.creatures = [];
 	this.oldGens = [];
+	this.x_gen = null; // default; grabs latest
+	this.y_gen = null; // default; grabs latest
 	this.oldCreatures = [];
 	this.model = config.model;
 	this.exportModel = [];
@@ -96,6 +98,11 @@ function NEAT(config) {
 		}
 	}
 
+	this.setParentGens = function (x_gen, y_gen) {
+		this.x_gen = x_gen;
+		this.y_gen = y_gen;
+	}
+	
 	this.doGen = function () { // Does 1 fast generation with crossover and mutation.
 		this.crossover();
 		this.mutate();
