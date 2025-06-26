@@ -2,6 +2,7 @@ const TOTAL = 250 // 1000;
 let birds = [];
 let pipes = [];
 let counter = 0;
+let lastAddPipeWV_counter = 0;
 let slider;
 let neat;
 
@@ -26,8 +27,15 @@ function setup() {
 }
 
 function draw() {
+  
   for (let n = 0; n < slider.value(); n++) {
-    if (counter % 75 == 0 || counter % int(105 + 20 * random()) == 0) {
+    addPipeWvariance = (counter % int(115 + 10 * random()) == 0);
+	if (addPipeWvariance && lastAddPipeWV_counter < counter - 22) {
+        lastAddPipeWV_counter = counter;
+	} else {
+		addPipeWvariance = false;
+	}
+    if (counter % 75 == 0 || addPipeWvariance) {
       pipes.push(new Pipe());
     }
     counter++;
