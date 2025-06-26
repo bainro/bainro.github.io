@@ -46,13 +46,16 @@ function NEAT(config) {
 
 			px = parentx.flattenGenes();
 			py = parenty.flattenGenes();
-			if (self.rgb) { // first 3 genes are RGB values
+			let genes;
+			let rgb_genes = [];
+			if (self.rgb) { 
+				// first 3 genes are RGB values
+				// get color from one random parent
+				rgb_genes = px.slice(0, 3);
 				px = px.slice(3);
 				py = py.slice(3);
 			}
-			let genes = this.crossoverMethod(px, py);
-			// get color from one random parent
-			let rgb_genes = px.slice(0, 3);
+			genes = this.crossoverMethod(px, py);
 			genes = rgb_genes.concat(genes);
 			this.creatures[i].setFlattenedGenes(genes);
 		}
