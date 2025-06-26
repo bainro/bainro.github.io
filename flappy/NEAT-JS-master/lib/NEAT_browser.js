@@ -177,24 +177,28 @@ function Creature(model) {
 	this.score = 0;
 
 	this.flattenGenes = function () { // Flattens the genes of the creature's genes and returns them as an array.
-		let genes = [];
+	let genes = [];
 
-		for (let i = 0; i < this.network.layers.length - 1; i++) {
-			for (let w = 0; w < this.network.layers[i].nodes.length; w++) {
-				for (let e = 0; e < this.network.layers[i].nodes[w].weights.length; e++) {
-					genes.push(this.network.layers[i].nodes[w].weights[e]);
-				}
-			}
-
-			for (let w = 0; w < this.network.layers[i].bias.weights.length; w++) {
-				genes.push(this.network.layers[i].bias.weights[w]);
+	genes = genes.concat(this.rgb);
+	
+	for (let i = 0; i < this.network.layers.length - 1; i++) {
+		for (let w = 0; w < this.network.layers[i].nodes.length; w++) {
+			for (let e = 0; e < this.network.layers[i].nodes[w].weights.length; e++) {
+				genes.push(this.network.layers[i].nodes[w].weights[e]);
 			}
 		}
 
-		return genes;
+		for (let w = 0; w < this.network.layers[i].bias.weights.length; w++) {
+			genes.push(this.network.layers[i].bias.weights[w]);
+		}
 	}
 
+	return genes;
+}
+
 	this.setFlattenedGenes = function (genes) { // Sets an array of weights as the creature's genes.
+		this.rgb = genes.splice(0, 3); // 1st 3 genes are for color info
+		
 		for (let i = 0; i < this.network.layers.length - 1; i++) {
 			for (let w = 0; w < this.network.layers[i].nodes.length; w++) {
 				for (let e = 0; e < this.network.layers[i].nodes[w].weights.length; e++) {
