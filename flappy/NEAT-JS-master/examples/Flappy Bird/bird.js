@@ -7,7 +7,9 @@ class Bird {
     this.gravity = 0.8;
     this.lift = -12;
     this.velocity = 0;
-
+    this.strokeR = int(random() * 255);
+	this.strokeG = int(random() * 255);
+	this.strokeB = int(random() * 255);
 
     this.score = 0;
     this.fitness = 0;
@@ -17,7 +19,7 @@ class Bird {
   show() {
 	  if (!this.dead) {
     stroke(255);
-    fill(255, 100);
+    fill(this.strokeR, this.strokeG, this.strokeB);
     ellipse(this.x, this.y, 32, 32);
 	  }
   }
