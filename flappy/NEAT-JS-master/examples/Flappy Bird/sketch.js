@@ -13,7 +13,8 @@ let config = {
 	mutationRate: 0.1,
 	crossoverMethod: crossover.RANDOM,
 	mutationMethod: mutate.RANDOM,
-	populationSize: TOTAL
+	populationSize: TOTAL,
+	RGBmode: true,
 };
 
 function setup() {
