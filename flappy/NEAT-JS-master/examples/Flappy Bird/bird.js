@@ -1,5 +1,5 @@
 class Bird {
-  constructor() {
+  constructor(r=false, g=false, b=false) {
     this.y = height / 2;
     this.x = 64;
 	this.dead = false;
@@ -7,9 +7,9 @@ class Bird {
     this.gravity = 0.8;
     this.lift = -12;
     this.velocity = 0;
-    this.strokeR = int(random() * 255);
-	this.strokeG = int(random() * 255);
-	this.strokeB = int(random() * 255);
+    this.R = r || int(random() * 255);
+	this.G = g || int(random() * 255);
+	this.B = b || int(random() * 255);
 
     this.score = 0;
     this.fitness = 0;
@@ -28,7 +28,11 @@ class Bird {
     if (!this.dead) this.velocity += this.lift;
   }
 
-
+  setColor(r,g,b) {
+	  this.R = r;
+	  this.G = g;
+	  this.B = b;
+  }
 
   closestP(pipes) {
 
