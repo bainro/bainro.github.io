@@ -1,4 +1,4 @@
-const TOTAL = 250 // 1000;
+const TOTAL = 35 // 1000;
 let birds = [];
 let pipes = [];
 let counter = 0;
@@ -13,7 +13,8 @@ let config = {
 	mutationRate: 0.1,
 	crossoverMethod: crossover.RANDOM,
 	mutationMethod: mutate.RANDOM,
-	populationSize: TOTAL
+	populationSize: TOTAL,
+	RGBmode: true,
 };
 
 function setup() {
@@ -83,9 +84,13 @@ function draw() {
       for (let i = 0; i < TOTAL; i++) {
         neat.setFitness(birds[i].score, i);
         birds[i] = new Bird();
-
       }
       neat.doGen();
+	    // update bird colors
+	  let colors = neat.getColors();
+	  for (let i = 0; i < TOTAL; i++) {
+    	birds[i].setColors(colors[i]);
+  	  }
     }
   }
 
