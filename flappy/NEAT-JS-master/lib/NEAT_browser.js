@@ -175,6 +175,7 @@ function Creature(model) {
 
 	this.fitness = 0;
 	this.score = 0;
+	this.rgb = [(Math.random() * 2) - 1, (Math.random() * 2) - 1, (Math.random() * 2) - 1];
 
 	this.flattenGenes = function () { // Flattens the genes of the creature's genes and returns them as an array.
 	let genes = [];
