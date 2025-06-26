@@ -1,14 +1,3 @@
-/*
-	Author: ExtensionShoe
-	Date: 30/08/2019
-	License: MIT
-*/
-
-let activation = require('./ActivationFunction.js');
-let crossover = require('./Crossover.js');
-let mutate = require('./Mutate.js');
-let Creature = require('./Creature.js');
-
 function NEAT(config) {
 	this.creatures = [];
 	this.oldCreatures = [];
