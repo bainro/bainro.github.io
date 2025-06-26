@@ -6,6 +6,7 @@
 
 function NEAT(config) {
 	this.creatures = [];
+	this.oldGens = [];
 	this.oldCreatures = [];
 	this.model = config.model;
 	this.exportModel = [];
@@ -39,8 +40,8 @@ function NEAT(config) {
 	}
 
 	this.crossover = function () { // Takes two creature's genes flattens them and passes them to the crossover function.
+		this.oldCreatures = Object.assign([], this.creatures);
 		for (let i = 0; i < this.populationSize; i++) {
-			this.oldCreatures = Object.assign([], this.creatures);
 			let parentx = this.pickCreature();
 			let parenty = this.pickCreature();
 
@@ -61,6 +62,11 @@ function NEAT(config) {
 		}
 	}
 
+	this.storeGen = function () {
+		let currGen = Object.assign([], this.creatures);
+		this.oldGens.push(currGen);
+	}
+	
 	this.pickCreature = function () { // Normalizes every creature's score (fitness) and and returns a creature based on their fitness value.
 		let sum = 0;
 		for (let i = 0; i < this.oldCreatures.length; i++) {
