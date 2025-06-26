@@ -7,8 +7,6 @@
 function NEAT(config) {
 	this.creatures = [];
 	this.oldGens = [];
-	this.x_gen = null; // default; grabs latest
-	this.y_gen = null; // default; grabs latest
 	this.oldCreatures = [];
 	this.model = config.model;
 	this.exportModel = [];
@@ -41,11 +39,11 @@ function NEAT(config) {
 		}
 	}
 
-	this.crossover = function () { // Takes two creature's genes flattens them and passes them to the crossover function.
+	this.crossover = function (xGen=null, yGen=null) { // Takes two creature's genes flattens them and passes them to the crossover function.
 		this.oldCreatures = Object.assign([], this.creatures);
 		for (let i = 0; i < this.populationSize; i++) {
-			let parentx = this.pickCreature();
-			let parenty = this.pickCreature();
+			let parentx = this.pickCreature(xGen);
+			let parenty = this.pickCreature(yGen);
 
 			px = parentx.flattenGenes();
 			py = parenty.flattenGenes();
@@ -69,23 +67,27 @@ function NEAT(config) {
 		this.oldGens.push(currGen);
 	}
 	
-	this.pickCreature = function () { // Normalizes every creature's score (fitness) and and returns a creature based on their fitness value.
+	this.pickCreature = function (gen_idx=null) { // Normalizes every creature's score (fitness) and and returns a creature based on their fitness value.
 		let sum = 0;
-		for (let i = 0; i < this.oldCreatures.length; i++) {
-			sum += Math.pow(this.oldCreatures[i].score, 2);
+		let gen = this.oldCreatures;
+		if (gen_idx != null) {
+		    gen = this.oldGens[gen_idx];
+		}
+		for (let i = 0; i < gen.length; i++) {
+			sum += Math.pow(gen[i].score, 2);
 		}
 
-		for (let i = 0; i < this.oldCreatures.length; i++) {
-			this.oldCreatures[i].fitness = Math.pow(this.oldCreatures[i].score, 2) / sum;
+		for (let i = 0; i < gen.length; i++) {
+			gen[i].fitness = Math.pow(gen[i].score, 2) / sum;
 		}
 		let index = 0;
 		let r = Math.random();
 		while (r > 0) {
-			r -= this.oldCreatures[index].fitness;
+			r -= gen[index].fitness;
 			index += 1;
 		}
 		index -= 1;
-		return this.oldCreatures[index];
+		return gen[index];
 	}
 
 	this.setFitness = function (fitness, index) { // Sets a creature's score. This will then be normalized for actual fitness value.
@@ -103,8 +105,8 @@ function NEAT(config) {
 		this.y_gen = y_gen;
 	}
 	
-	this.doGen = function () { // Does 1 fast generation with crossover and mutation.
-		this.crossover();
+	this.doGen = function (xgen=null, ygen=null) { // Does 1 fast generation with crossover and mutation.
+		this.crossover(xgen, ygen);
 		this.mutate();
 		this.generation++;
 		console.log('Generation: ' + this.generation);
