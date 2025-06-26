@@ -57,11 +57,11 @@ function NEAT(config) {
 	this.pickCreature = function () { // Normalizes every creature's score (fitness) and and returns a creature based on their fitness value.
 		let sum = 0;
 		for (let i = 0; i < this.oldCreatures.length; i++) {
-			sum += Math.pow(this.oldCreatures[i].score, 2);
+			sum += Math.pow(this.oldCreatures[i].score, 1);
 		}
 
 		for (let i = 0; i < this.oldCreatures.length; i++) {
-			this.oldCreatures[i].fitness = Math.pow(this.oldCreatures[i].score, 2) / sum;
+			this.oldCreatures[i].fitness = Math.pow(this.oldCreatures[i].score, 1) / sum;
 		}
 		let index = 0;
 		let r = Math.random();
