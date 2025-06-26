@@ -57,9 +57,9 @@ class Bird {
 	  let inputs = [];
 	  let closest = this.closestP(pipes);
 	  if (closest == null) { // no pipe yet
-  		  inputs[0] = 'default';
-		  inputs[1] = 'default';
-		  inputs[2] = 'default';
+  		  inputs[0] = 1.1; // slightly bigger than when far away
+		  inputs[1] = 1.1; // slightly bigger than when far away
+		  inputs[2] = 1.1; // slightly bigger than when far away
 	  } else {
 	      inputs[0] = map(closest.x, this.x, width, 0, 1);
 	      // top of closest pipe opening
