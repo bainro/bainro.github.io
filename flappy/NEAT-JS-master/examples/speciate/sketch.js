@@ -2,6 +2,8 @@ const TOTAL = 60 // 1000;
 let birds = [];
 let pipes = [];
 let gen_dists = [];
+let diffGenFits = [];
+let simOn = true;
 let counter = 0;
 let gen = 1; // keep track of # of generations
 let slider;
@@ -29,7 +31,9 @@ function setup() {
 }
 
 function draw() {
-  
+  if (!simOn) {
+	  return
+  }
   for (let n = 0; n < slider.value(); n++) {
     if (counter % 57 == 0) {
       pipes.push(new Pipe());
@@ -90,7 +94,8 @@ function draw() {
         neat.setFitness(s, i);
         birds[i] = new Bird();
       }
-	  console.log("avg score: " + totalScore/TOTAL);
+	  let avgFit = totalScore/TOTAL;
+	  console.log("avg score: " + avgFit);
 	  // start saving after stabalization (~20 empicically)
 	  if (gen > 20) {
 		  neat.storeGen();
@@ -98,12 +103,17 @@ function draw() {
 	  let start_gen = null;
 	  let end_gen = null;
 	  if (gen > 50) {
-		  console.log('pass');
+		  if (gen > 51) {
+			  diffGenFits.push(avgFit);
+			  if (gen > 80) {
+				  simOn = false; // stop the simulation
+			  }
+		  }
 		  // need to make start and end_gen fx of gen
 		  // start_gen = ...
 		  // end_gen = ...
 		  let gen_dist = (end_gen - start_gen);
-		  this.gen_dists.push(gen_dist);
+		  gen_dists.push(gen_dist);
 		  console.log("generational distance: " + gen_dist)
 	  }
 	  neat.doGen(start_gen, end_gen);
