@@ -56,6 +56,9 @@ function NEAT(config) {
 				py = py.slice(3);
 			}
 			let genes = this.crossoverMethod(px, py);
+			// always get Mom's coloring information
+			let rgb_ = px.slice(0, 3);
+			genes = rgb_.concat(genes);
 			this.creatures[i].setFlattenedGenes(genes);
 		}
 	}
