@@ -81,11 +81,15 @@ function draw() {
     if (finish) {
       counter = 0;
       pipes = [];
+      let totalScore = 0;
       for (let i = 0; i < TOTAL; i++) {
-        neat.setFitness(birds[i].score, i);
+		s = birds[i].score;
+		totalScore += s;
+        neat.setFitness(s, i);
         birds[i] = new Bird();
       }
       neat.doGen();
+	  console.log("avg score: " + totalScore/TOTAL);
 	    // update bird colors
 	  let colors = neat.getColors();
 	  for (let i = 0; i < TOTAL; i++) {
