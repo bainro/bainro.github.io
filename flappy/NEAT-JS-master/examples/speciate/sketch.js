@@ -29,7 +29,7 @@ function setup() {
 function draw() {
   
   for (let n = 0; n < slider.value(); n++) {
-    if (counter % 48 == 0) {
+    if (counter % 57 == 0) {
       pipes.push(new Pipe());
     }
     counter++;
