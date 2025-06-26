@@ -1,5 +1,5 @@
 class Bird {
-  constructor() {
+  constructor(r=false, g=false, b=false) {
     this.y = height / 2;
     this.x = 64;
 	this.dead = false;
@@ -7,7 +7,9 @@ class Bird {
     this.gravity = 0.8;
     this.lift = -12;
     this.velocity = 0;
-
+    this.R = r || int(random() * 255);
+	this.G = g || int(random() * 255);
+	this.B = b || int(random() * 255);
 
     this.score = 0;
     this.fitness = 0;
@@ -17,7 +19,7 @@ class Bird {
   show() {
 	  if (!this.dead) {
     stroke(255);
-    fill(255, 100);
+    fill(this.strokeR, this.strokeG, this.strokeB);
     ellipse(this.x, this.y, 32, 32);
 	  }
   }
@@ -26,7 +28,11 @@ class Bird {
     if (!this.dead) this.velocity += this.lift;
   }
 
-
+  setColor(r,g,b) {
+	  this.R = r;
+	  this.G = g;
+	  this.B = b;
+  }
 
   closestP(pipes) {
 
@@ -50,16 +56,22 @@ class Bird {
   inputss(pipes) {
 	  let inputs = [];
 	  let closest = this.closestP(pipes);
-    inputs[0] = map(closest.x, this.x, width, 0, 1);
-      // top of closest pipe opening
-      inputs[1] = map(closest.top, 0, height, 0, 1);
-      // bottom of closest pipe opening
-      inputs[2] = map(closest.bottom, 0, height, 0, 1);
+	  if (closest == null) { // no pipe yet
+  		  inputs[0] = 1.1; // slightly bigger than when far away
+		  inputs[1] = 1.1; // slightly bigger than when far away
+		  inputs[2] = 1.1; // slightly bigger than when far away
+	  } else {
+	      inputs[0] = map(closest.x, this.x, width, 0, 1);
+	      // top of closest pipe opening
+	      inputs[1] = map(closest.top, 0, height, 0, 1);
+	      // bottom of closest pipe opening
+	      inputs[2] = map(closest.bottom, 0, height, 0, 1);
+	  }
       // bird's y position
       inputs[3] = map(this.y, 0, height, 0, 1);
       // bird's y velocity
       inputs[4] = map(this.velocity, -5, 5, 0, 1);
-	return inputs;
+	  return inputs;
   }
 
   offScreen() {
