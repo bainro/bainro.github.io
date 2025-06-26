@@ -2,6 +2,7 @@ const TOTAL = 60 // 1000;
 let birds = [];
 let pipes = [];
 let counter = 0;
+let gen = 1; // keep track of # of generations
 let slider;
 let neat;
 
@@ -88,9 +89,14 @@ function draw() {
         neat.setFitness(s, i);
         birds[i] = new Bird();
       }
+	  // start saving after stabalization (~20 empicically)
+	  if (gen > 20) {
+		  neat.storeGen();
+	  }
       neat.doGen();
 	  console.log("avg score: " + totalScore/TOTAL);
-	    // update bird colors
+	  gen += 1;
+	  // update bird colors
 	  let colors = neat.getColors();
 	  for (let i = 0; i < TOTAL; i++) {
     	birds[i].setColors(colors[i]);
