@@ -9,6 +9,7 @@ function NEAT(config) {
 	this.oldCreatures = [];
 	this.model = config.model;
 	this.exportModel = [];
+	this.rgb = config.RGBmode || false;
 	this.populationSize = config.populationSize || 500;
 	this.mutationRate = config.mutationRate || 0.05;
 	this.crossoverMethod = config.crossoverMethod || crossover.RANDOM;
@@ -43,7 +44,16 @@ function NEAT(config) {
 			let parentx = this.pickCreature();
 			let parenty = this.pickCreature();
 
-			let genes = this.crossoverMethod(parentx.flattenGenes(), parenty.flattenGenes());
+			px = parentx.flattenGenes();
+			py = parenty.flattenGenes();
+			if (self.rgb) { // first 3 genes are RGB values
+				px = px.slice(3);
+				py = py.slice(3);
+			}
+			let genes = this.crossoverMethod(px, py);
+			// get color from one random parent
+			let rgb_genes = px.slice(0, 3);
+			genes = rgb_genes.concat(genes);
 			this.creatures[i].setFlattenedGenes(genes);
 		}
 	}
@@ -101,6 +111,18 @@ function NEAT(config) {
 
 		for (let i = 0; i < this.creatures.length; i++) {
 			result.push(this.creatures[i].desicion());
+		}
+		return result;
+	}
+
+	this.getColors = function () {
+		let result = [];
+		for (let i = 0; i < this.creatures.length; i++) {
+			let genes = this.creatures[i].flattenGenes();
+			let rgb = genes.slice(0, 3);
+			// convert to 0-255
+			rgb = rgb.map(v => Math.round((v + 1) * 127.5));
+			result.push(rgb);
 		}
 		return result;
 	}
