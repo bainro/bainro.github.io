@@ -1,6 +1,7 @@
 const TOTAL = 60 // 1000;
 let birds = [];
 let pipes = [];
+let gen_dists = [];
 let counter = 0;
 let gen = 1; // keep track of # of generations
 let slider;
@@ -89,6 +90,7 @@ function draw() {
         neat.setFitness(s, i);
         birds[i] = new Bird();
       }
+	  console.log("avg score: " + totalScore/TOTAL);
 	  // start saving after stabalization (~20 empicically)
 	  if (gen > 20) {
 		  neat.storeGen();
@@ -100,9 +102,11 @@ function draw() {
 		  // need to make start and end_gen fx of gen
 		  // start_gen = ...
 		  // end_gen = ...
+		  let gen_dist = (end_gen - start_gen);
+		  this.gen_dists.push(gen_dist);
+		  console.log("generational distance: " + gen_dist)
 	  }
 	  neat.doGen(start_gen, end_gen);
-	  console.log("avg score: " + totalScore/TOTAL);
 	  gen += 1;
 	  // update bird colors
 	  let colors = neat.getColors();
