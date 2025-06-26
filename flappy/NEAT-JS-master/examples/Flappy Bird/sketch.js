@@ -86,6 +86,11 @@ function draw() {
 
       }
       neat.doGen();
+	  // update bird colors
+	  for (let i = 0; i < TOTAL; i++) {
+		let colors = neat.getColors();
+    	birds[i].setColors(colors[i]);
+  	  }
     }
   }
 
