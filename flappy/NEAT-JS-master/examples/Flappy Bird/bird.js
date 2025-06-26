@@ -10,16 +10,14 @@ class Bird {
     this.R = r || int(random() * 255);
 	this.G = g || int(random() * 255);
 	this.B = b || int(random() * 255);
-
     this.score = 0;
     this.fitness = 0;
-
   }
-
+	
   show() {
 	  if (!this.dead) {
     stroke(255);
-    fill(this.strokeR, this.strokeG, this.strokeB);
+    fill(this.R, this.G, this.B);
     ellipse(this.x, this.y, 32, 32);
 	  }
   }
@@ -28,7 +26,7 @@ class Bird {
     if (!this.dead) this.velocity += this.lift;
   }
 
-  setColor(r,g,b) {
+  setColors(r,g,b) {
 	  this.R = r;
 	  this.G = g;
 	  this.B = b;
@@ -46,10 +44,6 @@ class Bird {
         closestD = d;
       }
     }
-
-
-    
-  
 	return closest;
   }
   
