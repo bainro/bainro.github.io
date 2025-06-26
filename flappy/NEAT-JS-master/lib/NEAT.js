@@ -49,7 +49,13 @@ function NEAT(config) {
 			let parentx = this.pickCreature();
 			let parenty = this.pickCreature();
 
-			let genes = this.crossoverMethod(parentx.flattenGenes(), parenty.flattenGenes());
+			px = parentx.flattenGenes();
+			py = parenty.flattenGenes();
+			if (self.rgb) { // first 3 genes are RGB values
+				px = px.slice(3);
+				py = py.slice(3);
+			}
+			let genes = this.crossoverMethod(px, py);
 			this.creatures[i].setFlattenedGenes(genes);
 		}
 	}
