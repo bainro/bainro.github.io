@@ -56,16 +56,22 @@ class Bird {
   inputss(pipes) {
 	  let inputs = [];
 	  let closest = this.closestP(pipes);
-    inputs[0] = map(closest.x, this.x, width, 0, 1);
-      // top of closest pipe opening
-      inputs[1] = map(closest.top, 0, height, 0, 1);
-      // bottom of closest pipe opening
-      inputs[2] = map(closest.bottom, 0, height, 0, 1);
+	  if (closest == null) { // no pipe yet
+  		  inputs[0] = 'default';
+		  inputs[1] = 'default';
+		  inputs[2] = 'default';
+	  } else {
+	      inputs[0] = map(closest.x, this.x, width, 0, 1);
+	      // top of closest pipe opening
+	      inputs[1] = map(closest.top, 0, height, 0, 1);
+	      // bottom of closest pipe opening
+	      inputs[2] = map(closest.bottom, 0, height, 0, 1);
+	  }
       // bird's y position
       inputs[3] = map(this.y, 0, height, 0, 1);
       // bird's y velocity
       inputs[4] = map(this.velocity, -5, 5, 0, 1);
-	return inputs;
+	  return inputs;
   }
 
   offScreen() {
