@@ -2,7 +2,6 @@ const TOTAL = 250 // 1000;
 let birds = [];
 let pipes = [];
 let counter = 0;
-let lastAddPipeWV_counter = 0;
 let slider;
 let neat;
 
