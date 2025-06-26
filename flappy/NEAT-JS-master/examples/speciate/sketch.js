@@ -29,13 +29,13 @@ function setup() {
 function draw() {
   
   for (let n = 0; n < slider.value(); n++) {
-    addPipeWvariance = (counter % int(115 + 10 * random()) == 0);
+    addPipeWvariance = (counter % int(55 + 40 * random()) == 0);
 	if (addPipeWvariance && lastAddPipeWV_counter < counter - 22) {
         lastAddPipeWV_counter = counter;
 	} else {
 		addPipeWvariance = false;
 	}
-    if (counter % 75 == 0 || addPipeWvariance) {
+    if (addPipeWvariance) {
       pipes.push(new Pipe());
     }
     counter++;
