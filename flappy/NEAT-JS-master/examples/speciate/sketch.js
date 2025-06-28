@@ -105,7 +105,7 @@ function draw() {
 	  if (gen > 50) {
 		  if (gen > 51) {
 			  diffGenFits.push(avgFit);
-			  if (gen > 80) {
+			  if (final_gen > 80) {
 				  simOn = false; // stop the simulation
 				  break
 			  }
