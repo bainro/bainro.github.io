@@ -6,6 +6,7 @@ let diffGenFits = [];
 let simOn = true;
 let counter = 0;
 let gen = 1; // keep track of # of generations
+let final_gen = 3000;
 let slider;
 let neat;
 
