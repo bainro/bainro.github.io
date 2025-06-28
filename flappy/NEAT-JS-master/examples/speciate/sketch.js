@@ -107,6 +107,7 @@ function draw() {
 			  diffGenFits.push(avgFit);
 			  if (gen > 80) {
 				  simOn = false; // stop the simulation
+				  break
 			  }
 		  }
 		  // need to make start and end_gen fx of gen
