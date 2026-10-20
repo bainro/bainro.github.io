@@ -3,7 +3,7 @@
 <head>
   	<title>Robert Bain Portfolio</title>
   	<meta charset="utf-8">
-  	<meta name="description" content="He uses neuroscience to build better AI, and is currently studying for a phd in cognitive neuroscience under Bruce McNaughton at UC Irvine.">
+  	<meta name="description" content="Robert Bain is a computer vision and software engineer with an M.S. in Artificial Intelligence. His work spans deep learning, robotics, semiconductor microfabrication, and custom electronics.">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<meta name="author" content="Robert Bain">
   	<link rel="stylesheet" href="./css/styles.css">
@@ -88,7 +88,7 @@
 	<div class="about-me" id="about">
                 <iframe src="./neurons.html" id="dynamic-neurons"></iframe>
 		<div id="bio-1" class="biography">
-			Hi! My name is Robert Bain. I am a Neurobiology and Behavior <!--<br id="bio-br"/>-->PhD student in the McNaughton Lab at UC Irvine.
+			Hi! My name is Robert Bain. I'm a computer vision and software engineer with an M.S. in Artificial Intelligence. My work spans deep learning, robotics, semiconductor microfabrication, and custom electronics.
 			<span id="bio-span"></span>
 		</div>
 		<img id="scar-boi" src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie" tabindex="0">
@@ -108,6 +108,43 @@
 
 			<!--role of bio in ai-->
 			<div class='flex-project-inf'>
+
+				<!-- Pairwise Learning -->
+				<div class="flex-project-inf">
+				    <object data="./pairwise.pdf" type="application/pdf">
+				        <embed src="./pairwise.pdf" type="application/pdf"/>
+				    </object>
+				
+				    <p>
+				        We developed a pairwise learning framework that improves data
+				        efficiency in image regression and classification. Using a
+				        lightweight neural network trained from scratch on a single
+				        consumer GPU, we achieved state-of-the-art facial age estimation
+				        performance on UTKFace. Submitted to Machine Learning with
+				        Applications, 2026.
+				        <a href="./pairwise.pdf" target="_blank" rel="noopener">Read paper</a>.
+				        <a href="https://github.com/bainro/pairwise_learning"
+				           target="_blank" rel="noopener">Source code</a>.
+				    </p>
+				</div>
+
+				<!-- Brain MRI and Pairwise Learning -->
+				<div class="flex-project-inf">
+				    <object data="./bep.pdf" type="application/pdf">
+				        <embed src="./bep.pdf" type="application/pdf"/>
+				    </object>
+				
+				    <p>
+				        We developed a deep learning approach to predicting cognitive
+				        performance from structural brain MRI. Combining pairwise learning
+				        with systematic brain-region elimination, we investigated how to
+				        achieve accurate predictions, identify interpretable neuroanatomical
+				        features, and maintain practical computational requirements.
+				        Research preprint, 2026.
+				        <a href="./bep.pdf" target="_blank" rel="noopener">Read paper</a>.
+				    </p>
+				</div>
+				
 				<!-- This will allow PDFs to be displayed for more mobile users -->
 				<object data="./masters.pdf" type="application/pdf">
 					<embed src="https://drive.google.com/file/d/1Mi_ZpF1EPkE81P4GgWRA1iI0u7BWvOx2/preview?usp=sharing"/>
